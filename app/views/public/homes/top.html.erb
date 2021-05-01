@@ -1,1 +1,46 @@
 <h1>トップページです</h1>
+
+
+<h3>投稿フォーム</h3>
+
+<% if customer_signed_in? %>
+
+  <%= form_with model: @post_item, local:true do |f| %>
+
+    <div>商品名</div>
+    <%= f.text_field :title %>
+    <div>衝動ポイント</div>
+    <%= f.text_area :caption %>
+    <div>価格</div>
+    <%= f.text_field :price %>
+    <div>衝動リンクURL</div>
+    <%= f.text_field :url %>
+    <div>画像</div>
+    <div><%= f.attachment_field :image %></div>
+    <p><%= f.submit '投稿する' %></p>
+
+  <% end %>
+
+<% else %>
+
+  <div>投稿するには<%= link_to "ログイン", new_customer_session_path %>してください。</div>
+  <div>会員登録がお済みでない方は<%= link_to "こちら", new_customer_registration_path %>から</div>
+
+<% end %>
+
+<!--投稿一覧を表示するeach文です-->
+<% @post_items.each do |post_item| %>
+<div>
+  <p>商品名：<%= post_item.title %></p>
+  <%= link_to post_item_path(post_item.id) do %>
+  <%= attachment_image_tag post_item, :image, :fill, 100, 100 %>
+  <% end %>
+  <p>説明：<%= post_item.caption %></p>
+  <p>価格：<%= post_item.price %></p>
+  <p><%= link_to "衝動リンク", post_item.url %></p>
+  <p><%= post_item.customer.name %></p>
+  <% if post_item.customer_id == current_customer.id %>
+    <%= link_to "削除する", post_item_path(post_item), method: :delete %>
+  <% end %>
+</div>
+<% end %>
