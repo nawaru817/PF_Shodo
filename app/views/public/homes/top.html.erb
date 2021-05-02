@@ -45,6 +45,7 @@
       <% if post_item.customer_id == current_customer.id %>
         <%= link_to "削除する", post_item_path(post_item), method: :delete %>
       <% end %>
+      <p><%= link_to "#{post_item.post_comments.count} コメント", post_item_path(post_item.id) %></p>
     </div>
     <% end %>
   </div>

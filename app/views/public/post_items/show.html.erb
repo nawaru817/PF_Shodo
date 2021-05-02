@@ -9,3 +9,23 @@
 <% if @post_item.customer_id == current_customer.id %>
   <%= link_to "削除する", post_item_path(params[:id]), method: :delete %>
 <% end %>
+
+<div class="comments">
+  <p>コメント件数：<%= @post_item.post_comments.count %></p>
+  <% @post_item.post_comments.each do |post_comment| %>
+    <%= post_comment.customer.name %>
+    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+    <% if post_comment.customer == current_customer %>
+      <div class="comment-delete">
+        <%= link_to "削除", post_item_post_comment_path(post_comment.post_item, post_comment), method: :delete %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="new-comment">
+  <%= form_with(model:[@post_item, @post_comment], local: true) do |f| %>
+    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
