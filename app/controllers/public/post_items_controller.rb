@@ -14,6 +14,7 @@ class Public::PostItemsController < ApplicationController
   end
 
   def show
+    @post_item = PostItem.find(params[:id])
   end
 
   def destroy

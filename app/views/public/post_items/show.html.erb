@@ -1,0 +1,11 @@
+<h1>衝動詳細</h1>
+
+<p>商品名：<%= @post_item.title %></p>
+<%= attachment_image_tag @post_item, :image, :fill, 350, 250 %>
+<p>説明：<%= @post_item.caption %></p>
+<p>価格：<%= @post_item.price %></p>
+<p><%= link_to "衝動リンク", @post_item.url %></p>
+<p><%= @post_item.customer.name %></p>
+<% if @post_item.customer_id == current_customer.id %>
+  <%= link_to "削除する", post_item_path(params[:id]), method: :delete %>
+<% end %>
