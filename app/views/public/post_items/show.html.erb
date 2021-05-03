@@ -10,6 +10,7 @@
   <%= link_to "削除する", post_item_path(params[:id]), method: :delete %>
 <% end %>
 
+<!--コメントを表示するeach文です-->
 <div class="comments">
   <p>コメント件数：<%= @post_item.post_comments.count %></p>
   <% @post_item.post_comments.each do |post_comment| %>
@@ -23,9 +24,27 @@
   <% end %>
 </div>
 
+<!--コメントの投稿フォームです-->
 <div class="new-comment">
   <%= form_with(model:[@post_item, @post_comment], local: true) do |f| %>
     <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
+  <% end %>
+</div>
+
+<!--いいね機能-->
+<div class="favorite">
+  <% if @post_item.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to post_item_favorites_path(@post_item), method: :delete do %>
+        ♥<%= @post_item.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to post_item_favorites_path(@post_item), method: :post do %>
+        ♡<%= @post_item.favorites.count %> いいね
+      <% end %>
+    </p>
   <% end %>
 </div>
