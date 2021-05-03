@@ -38,14 +38,22 @@
       <%= link_to post_item_path(post_item.id) do %>
       <%= attachment_image_tag post_item, :image, :fill, 250, 150 %>
       <% end %>
-      <p>説明：<%= post_item.caption %></p>
-      <p>価格：<%= post_item.price %></p>
+      <p>衝動ポイント：<%= post_item.caption %></p>
+      <p>価格：<%= post_item.price %>円</p>
       <p><%= link_to "衝動リンク", post_item.url %></p>
       <p><%= post_item.customer.name %></p>
-      <% if post_item.customer_id == current_customer.id %>
-        <%= link_to "削除する", post_item_path(post_item), method: :delete %>
+      <% if customer_signed_in? %>
+        <% if post_item.customer_id == current_customer.id %>
+          <%= link_to "削除する", post_item_path(post_item), method: :delete %>
+        <% end %>
       <% end %>
-      <p><%= link_to "#{post_item.post_comments.count} コメント", post_item_path(post_item.id) %></p>
+      <p>
+        <%= link_to "#{post_item.post_comments.count} コメント", post_item_path(post_item.id) %>
+        <%= post_item.favorites.count %> いいね
+      </p>
+      <div class="impressions">
+        閲覧数：<%=  post_item.impressionist_count %>
+      </div>
     </div>
     <% end %>
   </div>

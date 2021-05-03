@@ -20,6 +20,7 @@ class Public::PostItemsController < ApplicationController
     @post_item = PostItem.find(params[:id])
     # impressionist(@post_item, nil, :unique => [:session_hash])
     impressionist(@post_item, nil, :unique => [:impressionable_id, :ip_address])
+    # impressionist(@post_item)
     @post_comment = PostComment.new
   end
 
