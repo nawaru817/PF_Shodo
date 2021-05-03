@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
 
+    get 'ranking', to: 'homes#ranking'
+
     resources :post_items, only: [:create, :edit, :update, :show, :destroy]do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
