@@ -1,5 +1,24 @@
 <h1>ランキングページです</h1>
-<%  @favorite_ranks.each do |favorite_rank| %>
-  <%= favorite_rank.title %>
-  <%= favorite_rank.favorites.count %> いいね
-<% end %>
+<div class="ranking">
+  <div>いいねランキング</div>
+  <% @favorite_ranks.each do |favorite_rank| %>
+    <%= favorite_rank.title %>
+    <%= favorite_rank.favorites.count %> いいね
+  <% end %>
+</div>
+<br>
+<div class="ranking">
+  <div>コメント数ランキング</div>
+  <% @comment_ranks.each do |comment_rank| %>
+    <%= comment_rank.title %>
+    <%= comment_rank.post_comments.count %>
+  <% end %>
+</div>
+<br>
+<div class="ranking">
+  <div>閲覧数ランキング</div>
+  <%  @impression_ranks.each do |impression_rank| %>
+    <%= impression_rank.title %>
+    <%= impression_rank.impressionist_count %>
+  <% end %>
+</div>
