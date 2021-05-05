@@ -8,7 +8,7 @@
 .post_form {
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: 120px;
   width: 250px;
   height: 400px;
   // background-color: red;
@@ -20,6 +20,7 @@
   // height: 1400px; /* 高さ1400px（多めに設定） */
   // background-color: green; /* 背景色green */
   display: flex; /* Flexboxの利用 */
+  align-content: flex-start;
    /* 子要素の横並び・中央寄せ */
   flex-wrap: wrap;
   margin: 0 auto;
