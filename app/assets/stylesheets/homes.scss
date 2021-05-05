@@ -26,8 +26,32 @@
   margin: 0 auto;
   }
 
+.container2 {
+  width: 50%; /* 横幅いっぱい */
+  // height: 1400px; /* 高さ1400px（多めに設定） */
+  // background-color: green; /* 背景色green */
+  display: flex; /* Flexboxの利用 */
+  align-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.container3 {
+  width: 100%; /* 横幅いっぱい */
+  // height: 1400px; /* 高さ1400px（多めに設定） */
+  // background-color: green; /* 背景色green */
+  display: flex; /* Flexboxの利用 */
+  align-content: flex-start;
+  margin: 0 auto;
+}
+
 .h3 {
   width: 100%;
+}
+
+.ranking {
+  width: 80%;
+  margin-bottom: 50px;
 }
 
 .box {

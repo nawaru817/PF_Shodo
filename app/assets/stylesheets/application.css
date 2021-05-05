@@ -30,7 +30,7 @@
   }
 
   .main {
-    width: 1000px; /* 横幅いっぱい */
+    width: 1200px; /* 横幅いっぱい */
     height: 1400px; /* 高さ1400px（多めに設定） */
     /*background-color: green;*/
     display: flex; /* Flexboxの利用 */
