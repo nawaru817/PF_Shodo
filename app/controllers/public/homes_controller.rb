@@ -2,7 +2,7 @@ class Public::HomesController < ApplicationController
 
   def top
     @post_item = PostItem.new
-    @post_items = PostItem.all
+    @post_items = PostItem.all.order(id: "DESC")
   end
 
   def ranking

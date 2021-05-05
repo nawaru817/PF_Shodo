@@ -6,7 +6,7 @@
 <p>価格：<%= @post_item.price %>円</p>
 <p><%= link_to "衝動リンク", @post_item.url %></p>
 <p><%= @post_item.customer.name %></p>
-
+<p>投稿日：<%= @post_item.created_at.strftime('%Y/%m/%d') %></p>
 <% if customer_signed_in? %>
   <% if @post_item.customer_id == current_customer.id %>
     <%= link_to "削除する", post_item_path(params[:id]), method: :delete %>

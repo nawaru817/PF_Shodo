@@ -1,0 +1,26 @@
+<h3>投稿フォーム</h3>
+
+<% if customer_signed_in? %>
+
+  <%= form_with model: post_item, local:true do |f| %>
+
+    <div>商品名</div>
+    <%= f.text_field :title %>
+    <div>衝動ポイント</div>
+    <%= f.text_area :caption %>
+    <div>価格</div>
+    <%= f.text_field :price %>
+    <div>衝動リンクURL</div>
+    <%= f.text_field :url %>
+    <div>画像</div>
+    <div><%= f.attachment_field :image %></div>
+    <p><%= f.submit '投稿する' %></p>
+
+  <% end %>
+
+<% else %>
+
+  <div>投稿するには<%= link_to "ログイン", new_customer_session_path %>してください。</div>
+  <div>会員登録がお済みでない方は<%= link_to "こちら", new_customer_registration_path %>から</div>
+
+<% end %>

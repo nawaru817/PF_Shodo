@@ -1,7 +1,5 @@
 class Public::PostItemsController < ApplicationController
 
-
-
   def create
     @post_item = PostItem.new(post_item_params)
     @post_item.customer_id = current_customer.id
@@ -16,9 +14,8 @@ class Public::PostItemsController < ApplicationController
   end
 
   def show
-    @impressionist = Impression.all
     @post_item = PostItem.find(params[:id])
-    # impressionist(@post_item, nil, :unique => [:session_hash])
+    # impressionist(@post_item, nil, unique: [:session_hash, :ip_address])
     impressionist(@post_item, nil, :unique => [:impressionable_id, :ip_address])
     # impressionist(@post_item)
     @post_comment = PostComment.new
