@@ -7,6 +7,12 @@ class Public::CustomersController < ApplicationController
     @customer_id = (params[:id]).to_i
   end
 
+  def favorite
+    @post_item = PostItem.new
+    @customer = Customer.find(params[:customer_id])
+    @favorites = @customer.favorites
+  end
+
   def edit
     @customer = Customer.find(params[:id])
   end

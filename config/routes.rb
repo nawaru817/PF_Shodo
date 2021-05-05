@@ -10,7 +10,9 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
     end
 
-    resources :customers, only:[:show, :edit, :update, :unsubscribe, :withdraw]
+    resources :customers, only:[:show, :edit, :update, :unsubscribe, :withdraw]do
+      get 'favorite', to: 'customers#favorite'
+    end
 
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

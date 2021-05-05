@@ -8,9 +8,13 @@ class Public::PostItemsController < ApplicationController
   end
 
   def edit
+    @post_item = PostItem.find(params[:id])
   end
 
   def update
+    @post_item = PostItem.find(params[:id])
+    @post_item.update(post_item_params)
+    redirect_to post_item_path(@post_item.id)
   end
 
   def show
