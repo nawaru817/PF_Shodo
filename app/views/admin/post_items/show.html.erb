@@ -1,0 +1,39 @@
+<h1>衝動詳細(管理者)</h1>
+
+<p>商品名：<%= @post_item.title %></p>
+<%= attachment_image_tag @post_item, :image, :fill, 350, 250 %>
+<p>説明：<%= @post_item.caption %></p>
+<p>価格：<%= @post_item.price %>円</p>
+<p><%= link_to "衝動リンク", @post_item.url %></p>
+<p><%= @post_item.customer.name %></p>
+<p>投稿日：<%= @post_item.created_at.strftime('%Y/%m/%d') %></p>
+<% if admin_signed_in? %>
+  <%= link_to "編集する", edit_admin_post_item_path(params[:id]) %>
+  <%= link_to "削除する", admin_post_item_path(params[:id]), method: :delete %>
+<% end %>
+
+<!--コメントを表示するeach文です-->
+<div class="comments">
+  <p>コメント件数：<%= @post_item.post_comments.count %></p>
+  <% @post_item.post_comments.each do |post_comment| %>
+    <%= post_comment.customer.name %>
+    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+
+    <% if admin_signed_in? %>
+      <span class="comment-delete">
+        <%= link_to "削除", admin_post_item_post_comment_path(post_comment.post_item, post_comment), method: :delete %>
+      </span>
+    <% end %>
+    <br>
+  <% end %>
+</div>
+
+<!--いいね数表示-->
+<div class="favorite">
+  <%= @post_item.favorites.count %> いいね
+</div>
+
+<!--閲覧数を表示しています-->
+<div class="impressions">
+  閲覧数：<%=  @post_item.impressionist_count %>
+</div>

@@ -7,20 +7,20 @@
     <% @post_items.each do |post_item| %>
       <div class="box">
         <div><span>商品名：<%= post_item.title %></span>　<span><%= link_to post_item.customer.name, customer_path(post_item.customer_id) %></span></div>
-        <%= link_to post_item_path(post_item.id) do %>
+        <%= link_to admin_post_item_path(post_item.id) do %>
           <%= attachment_image_tag post_item, :image, :fill, 250, 150 %>
         <% end %>
         <p>衝動ポイント<br><%= (post_item.caption).truncate(29) %></p>
         <p>価格：<%= post_item.price %>円</p>
         <p><%= link_to "衝動リンク", post_item.url %></p>
         <p>
-          <%= link_to "#{post_item.post_comments.count} コメント", post_item_path(post_item.id) %>
+          <%= link_to "#{post_item.post_comments.count} コメント", admin_post_item_path(post_item.id) %>
           <%= post_item.favorites.count %> いいね
         </p>
         <div class="impressions">
           <span>閲覧数：<%=  post_item.impressionist_count %></span>
           <% if admin_signed_in? %>
-            <span><%= link_to "削除する", post_item_path(post_item), method: :delete %></span>
+            <span><%= link_to "削除する", admin_post_item_path(post_item), method: :delete %></span>
           <% end %>
         </div>
       </div>

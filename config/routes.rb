@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'top', to: 'homes#top'
+    resources :post_items, only: [:create, :edit, :update, :show, :destroy]do
+      resources :post_comments, only: [:destroy]
+    end
 
 
   end

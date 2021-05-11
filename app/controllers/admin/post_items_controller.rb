@@ -1,11 +1,4 @@
-class Public::PostItemsController < ApplicationController
-
-  def create
-    @post_item = PostItem.new(post_item_params)
-    @post_item.customer_id = current_customer.id
-    @post_item.save
-    redirect_to root_path
-  end
+class Admin::PostItemsController < ApplicationController
 
   def edit
     @post_item = PostItem.find(params[:id])
@@ -14,7 +7,7 @@ class Public::PostItemsController < ApplicationController
   def update
     @post_item = PostItem.find(params[:id])
     @post_item.update(post_item_params)
-    redirect_to post_item_path(@post_item.id)
+    redirect_to admin_post_item_path(@post_item.id)
   end
 
   def show
@@ -28,7 +21,7 @@ class Public::PostItemsController < ApplicationController
   def destroy
     @post_item = PostItem.find(params[:id])
     @post_item.destroy
-    redirect_to root_path
+    redirect_to admin_top_path
   end
 
    private
