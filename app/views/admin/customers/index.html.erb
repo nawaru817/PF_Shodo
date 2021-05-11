@@ -1,0 +1,22 @@
+<h1>ユーザー一覧(管理者)</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ユーザーID</th>
+      <th>ユーザー名</th>
+      <th>メールアドレス</th>
+      <th>投稿数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.id %></td>
+        <td><%= link_to customer.name, admin_customer_path(customer) %></td>
+        <td><%= customer.email %></td>
+        <td><%= customer.post_items.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admin, controllers: {
       sessions: 'admin/admins/sessions',
       registrations: 'admin/admins/registrations',
@@ -10,8 +11,9 @@ Rails.application.routes.draw do
     resources :post_items, only: [:create, :edit, :update, :show, :destroy]do
       resources :post_comments, only: [:destroy]
     end
-
-
+    resources :customers, only: [:index, :edit, :update, :show]do
+      get 'favorite', to: 'customers#favorite'
+    end
   end
 
   devise_for :customers

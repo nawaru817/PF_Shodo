@@ -1,0 +1,14 @@
+<h2>情報編集(管理者)</h2>
+
+<%= form_with model: [:admin,@customer], local:true do |f| %>
+  <div>
+    <h3>ユーザー情報</h3>
+    <table>
+        <thead>
+          <tr><th>ユーザーネーム</th><td><%= f.text_field :name, autofocus: true, id:"Name", placeholder:"名前"%></td></tr>
+          <tr><th>メールアドレス</th><td><%= f.text_field :email, autofocus: true, id:"email", placeholder:"メールアドレス"%></td></tr>
+          <tr><td colspan="2"><%= f.submit "変更を保存" %></td></tr>
+        </thead>
+    </table>
+  </div>
+<% end %>

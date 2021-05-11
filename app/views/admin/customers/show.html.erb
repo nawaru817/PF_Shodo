@@ -1,0 +1,43 @@
+<div class= "post_form">
+  <div class= "customer_info">
+    <h3>ユーザー情報(管理者)</h3>
+    <table>
+        <thead>
+          <tr><th>ユーザーネーム</th><td><%= @customer.name %></td></tr>
+          <tr><th>投稿数</th><td><%= @post_items.where(customer_id: @customer_id).count %></td></tr>
+          <tr><td colspan="2"><%= link_to "いいね一覧", admin_customer_favorite_path(params[:id]) %></td></tr>
+          <% if admin_signed_in? %>
+            <tr><td colspan="2"><%= link_to "情報編集", edit_admin_customer_path(params[:id]) %></td></tr>
+          <% end %>
+        </thead>
+    </table>
+  </div>
+</div>
+
+<div class="container">
+  <h3 class="h3"><%= @customer.name %>さんの投稿一覧</h3>
+  <!--ユーザ投稿一覧を表示するeach文です-->
+  <% @post_items.each do |post_item| %>
+    <% if post_item.customer_id == @customer_id %>
+      <div class="box">
+        <div><span>商品名：<%= post_item.title %></span>　<span><%= post_item.customer.name %></span></div>
+        <%= link_to admin_post_item_path(post_item.id) do %>
+          <%= attachment_image_tag post_item, :image, :fill, 250, 150 %>
+        <% end %>
+        <p>衝動ポイント：<%= post_item.caption %></p>
+        <p>価格：<%= post_item.price %>円</p>
+        <p><%= link_to "衝動リンク", post_item.url %></p>
+        <p>
+          <%= link_to "#{post_item.post_comments.count} コメント", admin_post_item_path(post_item.id) %>
+          <%= post_item.favorites.count %> いいね
+        </p>
+        <div class="impressions">
+          <span>閲覧数：<%=  post_item.impressionist_count %></span>
+          <% if admin_signed_in? %>
+            <span><%= link_to "削除する", admin_post_item_path(post_item), method: :delete %></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
