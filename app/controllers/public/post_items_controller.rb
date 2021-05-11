@@ -28,7 +28,11 @@ class Public::PostItemsController < ApplicationController
   def destroy
     @post_item = PostItem.find(params[:id])
     @post_item.destroy
-    redirect_to root_path
+    if admin_signed_in?
+      redirect_to admin_top_path
+    else
+      redirect_to root_path
+    end
   end
 
    private
