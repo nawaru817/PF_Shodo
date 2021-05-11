@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  devise_for :admin, controllers: {
+      sessions: 'admin/admins/sessions',
+      registrations: 'admin/admins/registrations',
+      passwords: 'admin/admins/passwords'
+    }
+
+  namespace :admin do
+    get 'top', to: 'homes#top'
+
+
+  end
+
   devise_for :customers
   scope module: :public do
     root to: 'homes#top'
