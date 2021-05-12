@@ -50,6 +50,15 @@
         <%= link_to "ログイン", new_customer_session_path %>
       </li>
     <% end %>
+
+    <%= search_form_for @search, url: search_post_item_path do |f| %>
+      <!--nameカラムに対して部分一致検索ができる-->
+      <%= f.label :title_cont, "商品名を含む" %>
+      <%= f.search_field :title_cont %>
+
+      <!--検索ボタン-->
+      <div class="actions"><%= f.submit "検索" %></div>
+    <% end %>
     </div>
 
     <div class="main">

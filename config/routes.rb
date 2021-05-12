@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
+    get 'search_post_item', to: 'post_items#search_post_item'
 
     resources :customers, only:[:show, :edit, :update, :unsubscribe, :withdraw]do
       get 'favorite', to: 'customers#favorite'

@@ -31,6 +31,13 @@ class Public::PostItemsController < ApplicationController
     redirect_to root_path
   end
 
+  def search_post_item
+    @post_item = PostItem.new
+    @impression_ranks = PostItem.all.order(impressions_count: "DESC").limit(5)
+    @favorite_ranks = PostItem.find(Favorite.group(:post_item_id).order('count(post_item_id) desc').limit(5).pluck(:post_item_id))
+    @comment_ranks =PostItem.find(PostComment.group(:post_item_id).order('count(post_item_id) desc').limit(5).pluck(:post_item_id))
+  end
+
    private
 
   def post_item_params
