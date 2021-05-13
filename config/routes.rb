@@ -32,6 +32,8 @@ Rails.application.routes.draw do
       get 'favorite', to: 'customers#favorite'
     end
 
+    resources :tags, only:[:show]
+
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

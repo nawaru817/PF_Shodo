@@ -14,7 +14,7 @@
         </thead>
     </table>
   </div>
-  
+
   <%= render 'public/post_items/post_form', post_item: @post_item %>
 </div>
 
@@ -43,6 +43,11 @@
             <% end %>
           <% end %>
         </div>
+        <% @tag_maps.each do |tag_map| %>
+          <% if tag_map.post_item_id == post_item.id %>
+            <%= link_to tag_map.tag.tag_name, tag_path(tag_map.tag.id) %>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
   <% end %>

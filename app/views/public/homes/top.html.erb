@@ -1,5 +1,7 @@
 <div class="body">
-  <div class= "post_form"><%= render 'public/post_items/post_form', post_item: @post_item %></div>
+
+  <div class= "post_form"><%= render 'public/post_items/post_form', post_item: @post_item %></div><!--投稿フォームの部分テンプレートです-->
+
   <div class="container">
     <h3 class="h3">投稿一覧</h3>
     <!--投稿一覧を表示するeach文です-->
@@ -24,76 +26,17 @@
             <% end %>
           <% end %>
         </div>
+        <% @tag_maps.each do |tag_map| %>
+          <% if tag_map.post_item_id == post_item.id %>
+            <%= link_to tag_map.tag.tag_name, tag_path(tag_map.tag.id) %>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
   </div>
 
   <div class="container2">
-    <h3 class="h3">ランキング</h3>
-    <table class="ranking">
-      <thead>
-        <tr><th colspan= "4">いいねランキング</th></tr>
-        <% @favorite_ranks.each_with_index do |favorite_rank,i| %>
-          <tr>
-            <th><%= i + 1 %>位</th>
-            <td>
-              <%= link_to post_item_path(favorite_rank.id) do %>
-                <%= attachment_image_tag favorite_rank, :image, :fill, 60, 50 %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to favorite_rank.title, post_item_path(favorite_rank.id) %>
-            </td>
-            <td>
-              <%= favorite_rank.favorites.count %> いいね
-            </td>
-          </tr>
-        <% end %>
-      </thead>
-    </table>
-
-    <table class="ranking">
-      <thead>
-        <tr><th colspan= "4">コメント数ランキング</th></tr>
-        <% @comment_ranks.each_with_index do |comment_rank,i| %>
-          <tr>
-            <th><%= i + 1 %>位</th>
-            <td>
-              <%= link_to post_item_path(comment_rank.id) do %>
-                <%= attachment_image_tag comment_rank, :image, :fill, 60, 50 %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to comment_rank.title, post_item_path(comment_rank.id) %>
-            </td>
-            <td>
-              <%= comment_rank.post_comments.count %> コメント
-            </td>
-          </tr>
-        <% end %>
-      </thead>
-    </table>
-
-    <table class="ranking">
-      <thead>
-        <tr><th colspan= "4">閲覧数ランキング</th></tr>
-        <% @impression_ranks.each_with_index do |impression_rank,i| %>
-          <tr>
-            <th><%= i + 1 %>位</th>
-            <td>
-              <%= link_to post_item_path(impression_rank.id) do %>
-                <%= attachment_image_tag impression_rank, :image, :fill, 60, 50 %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to impression_rank.title, post_item_path(impression_rank.id) %>
-            </td>
-            <td>
-              <%= impression_rank.impressionist_count %>回
-            </td>
-          </tr>
-        <% end %>
-      </thead>
-    </table>
+    <%= render 'public/homes/ranking_form' %><!--ランキング一覧(サイドバー)の部分テンプレートです-->
   </div>
+
 </div>

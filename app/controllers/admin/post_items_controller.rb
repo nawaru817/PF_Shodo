@@ -2,11 +2,14 @@ class Admin::PostItemsController < ApplicationController
 
   def edit
     @post_item = PostItem.find(params[:id])
+    @tag_list = @post_item.tags.pluck(:tag_name).join(" ")
   end
 
   def update
     @post_item = PostItem.find(params[:id])
+    tag_list = params[:post_item][:tag_name].split(nil)
     @post_item.update(post_item_params)
+    @post_item.save_tag(tag_list)
     redirect_to admin_post_item_path(@post_item.id)
   end
 

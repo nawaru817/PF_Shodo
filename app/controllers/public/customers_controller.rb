@@ -2,6 +2,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @post_item = PostItem.new
+    @tag_maps = TagMap.all
     @customer = Customer.find(params[:id])
     @post_items = PostItem.all.order(id: "DESC")
     @customer_id = (params[:id]).to_i
