@@ -9,27 +9,28 @@
   position: -webkit-sticky;
   position: sticky;
   top: 120px;
-  width: 250px;
+  width: 30%;
   height: 400px;
   // background-color: red;
 
 }
 
-.container {
+.container_top {
   width: 100%; /* 横幅いっぱい */
   // height: 1400px; /* 高さ1400px（多めに設定） */
-  // background-color: green; /* 背景色green */
+  background-color: #eee8aa; /* 背景色green */
   display: flex; /* Flexboxの利用 */
   align-content: flex-start;
    /* 子要素の横並び・中央寄せ */
   flex-wrap: wrap;
   margin: 0 auto;
+  padding-left: 5%;
   }
 
-.container2 {
-  width: 50%; /* 横幅いっぱい */
+.container_side-ranking {
+  width: 40%; /* 横幅いっぱい */
   // height: 1400px; /* 高さ1400px（多めに設定） */
-  // background-color: green; /* 背景色green */
+  background-color: blue; /* 背景色green */
   display: flex; /* Flexboxの利用 */
   align-content: flex-start;
   flex-wrap: wrap;

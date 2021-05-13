@@ -12,54 +12,89 @@
   <body>
     <div class="header">
     <% if customer_signed_in? %>
-      <li>
-        <%= link_to "トップページ", root_path %>
-      </li>
-      <li>
-        <%= link_to "ランキング", ranking_path %>
-      </li>
-      <li>
-        <%= link_to "マイページ", customer_path(current_customer.id) %>
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      </li>
+      <nav class="header__navbar">
+        <ul>
+          <li>
+            <%= link_to "トップページ", root_path, class: "header__navbar--item" %>
+          </li>
+          <li>
+            <%= link_to "ランキング", ranking_path, class: "header__navbar--item" %>
+          </li>
+          <li>
+            <%= link_to "マイページ", customer_path(current_customer.id), class: "header__navbar--item" %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "header__navbar--item" %>
+          </li>
+        </ul>
+        <div class="header__search">
+          <%= search_form_for @search, url: search_post_item_path do |f| %>
+            <!--nameカラムに対して部分一致検索ができる-->
+            <%= f.label :title_cont, "商品名を含む" %>
+            <%= f.search_field :title_cont %>
+
+            <!--検索ボタン-->
+            <span class="actions"><%= f.submit "検索" %></span>
+          <% end %>
+        </div>
+      </nav>
     <% elsif admin_signed_in? %>
-      <li>
-        <%= link_to "トップページ", admin_top_path %>
-      </li>
-      <li>
-        <%= link_to "ランキング", ranking_path %>
-      </li>
-      <li>
-        <%= link_to "ユーザー一覧", admin_customers_path %>
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+      <nav class="header__navbar">
+        <ul>
+          <li>
+            <%= link_to "トップページ", admin_top_path, class: "header__navbar--item" %>
+          </li>
+          <li>
+            <%= link_to "ランキング", ranking_path, class: "header__navbar--item" %>
+          </li>
+          <li>
+            <%= link_to "ユーザー一覧", admin_customers_path, class: "header__navbar--item" %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "header__navbar--item" %>
+          </li>
+        </ul>
+        <div class="header__search">
+          <%= search_form_for @search, url: search_post_item_path do |f| %>
+            <!--nameカラムに対して部分一致検索ができる-->
+            <%= f.label :title_cont, "商品名を含む" %>
+            <%= f.search_field :title_cont %>
+
+            <!--検索ボタン-->
+            <span class="actions"><%= f.submit "検索" %></span>
+          <% end %>
+        </div>
+      </nav>
     <% else %>
-      <li>
-        <%= link_to "トップページ", root_path %>
-      </li>
-      <li>
-        <%= link_to "ランキング", ranking_path %>
-      </li>
-      <li>
-        <%= link_to "新規登録", new_customer_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_customer_session_path %>
-      </li>
+      <nav class="header__navbar">
+        <ul>
+          <li>
+            <%= link_to "トップページ", root_path, class: "header__navbar--item" %>
+          </li>
+          <li>
+            <%= link_to "ランキング", ranking_path, class: "header__navbar--item" %>
+          </li>
+          <li>
+            <%= link_to "新規登録", new_customer_registration_path, class: "header__navbar--item" %>
+          </li>
+          <li>
+            <%= link_to "ログイン", new_customer_session_path, class: "header__navbar--item" %>
+          </li>
+        </ul>
+        <div class="header__search">
+          <%= search_form_for @search, url: search_post_item_path do |f| %>
+            <!--nameカラムに対して部分一致検索ができる-->
+            <%= f.label :title_cont, "商品名を含む" %>
+            <%= f.search_field :title_cont %>
+
+            <!--検索ボタン-->
+            <span class="actions"><%= f.submit "検索" %></span>
+          <% end %>
+        </div>
+      </nav>
     <% end %>
 
-    <%= search_form_for @search, url: search_post_item_path do |f| %>
-      <!--nameカラムに対して部分一致検索ができる-->
-      <%= f.label :title_cont, "商品名を含む" %>
-      <%= f.search_field :title_cont %>
 
-      <!--検索ボタン-->
-      <div class="actions"><%= f.submit "検索" %></div>
-    <% end %>
-    </div>
 
     <div class="main">
     <%= yield %>
