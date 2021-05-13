@@ -14,6 +14,9 @@
     <%= f.text_field :url %>
     <div>画像</div>
     <div><%= f.attachment_field :image %></div>
+    <div>スペースを入力することで複数のタグを付けることができます。</div>
+    <div>例：音楽 文芸 スポーツ</div>
+    <div><%= f.text_field :tag_name %></div>
     <p><%= f.submit '投稿する' %></p>
 
   <% end %>

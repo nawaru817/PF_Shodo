@@ -3,7 +3,9 @@ class Public::PostItemsController < ApplicationController
   def create
     @post_item = PostItem.new(post_item_params)
     @post_item.customer_id = current_customer.id
+    tag_list = params[:post_item][:tag_name].split(nil)
     @post_item.save
+    @post_item.save_tag(tag_list)
     redirect_to root_path
   end
 
