@@ -11,6 +11,7 @@
 
   <body>
     <div class="header">
+      <span class="header__logo"><%= link_to image_tag("logo2.png", alt: "logo2", id: "assets", class: "image", width: "180px"), root_path %></span>
     <% if customer_signed_in? %>
       <nav class="header__navbar">
         <ul>

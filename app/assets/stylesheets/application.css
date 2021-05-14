@@ -23,11 +23,15 @@
 .header{
   width: 100%; /* 横幅いっぱい */
   height: 120px; /* 高さ120px */
-  top: 0;
+}
+
+.header__logo{
+  position: absolute;
+  margin-left: 20px;
 }
 
 nav {
-background-color: #708090;
+background-color: #1d1265;
 color: white;
 }
 
@@ -62,10 +66,11 @@ nav li:hover {
 .main {
   width: 100%; /* 横幅いっぱい */
   height: 1400px; /* 高さ1400px（多めに設定） */
-  background-color: #fff8dc;
+  /*background-color: #fff8dc;*/
   display: flex; /* Flexboxの利用 */
   justify-content: center; /* 子要素の横並び・中央寄せ */
   margin: 0 auto;
+  padding-top: 20px;
   padding-left: 5%;
   padding-right: 5%;
 }
