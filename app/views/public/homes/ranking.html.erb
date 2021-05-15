@@ -1,7 +1,7 @@
 <div class= "post_form"><%= render 'public/post_items/post_form', post_item: @post_item %></div>
 
-<div class="container3">
-  <table class="ranking">
+<div class="container_ranking">
+  <table class="container_ranking__ranking">
     <thead>
       <tr><th colspan= "4">いいねランキング</th></tr>
       <% @favorite_ranks.each_with_index do |favorite_rank,i| %>
@@ -23,7 +23,7 @@
     </thead>
   </table>
 
-  <table class="ranking">
+  <table class="container_ranking__ranking">
     <thead>
       <tr><th colspan= "4">コメント数ランキング</th></tr>
       <% @comment_ranks.each_with_index do |comment_rank,i| %>
@@ -45,7 +45,7 @@
     </thead>
   </table>
 
-  <table class="ranking">
+  <table class="container_ranking__ranking">
     <thead>
       <tr><th colspan= "4">閲覧数ランキング</th></tr>
       <% @impression_ranks.each_with_index do |impression_rank,i| %>

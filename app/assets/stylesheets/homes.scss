@@ -9,10 +9,14 @@
   position: -webkit-sticky;
   position: sticky;
   top: 120px;
-  width: 300px;
-  height: 500px;
-  background-color: red;
+  width: 280px;
+  height: 750px;
+  // background-color: red;
 
+}
+
+.post_form__item{
+  padding-left: 30px;
 }
 
 .container_top {
@@ -37,7 +41,7 @@
   margin: 0 auto;
 }
 
-.container3 {
+.container_ranking {
   width: 100%; /* 横幅いっぱい */
   // height: 1400px; /* 高さ1400px（多めに設定） */
   // background-color: green; /* 背景色green */
@@ -46,7 +50,15 @@
   margin: 0 auto;
 }
 
+.container_ranking__ranking {
+  margin-right: 10px;
+}
+
 .h3 {
+  width: 100%;
+}
+
+.h2 {
   width: 100%;
 }
 
@@ -59,7 +71,7 @@
 .box {
   height: 420px;
   width: 270px;
-  // background: tomato;
+  background: white;
   box-shadow: 0 0 4px gray;
   border-radius: 5px;
   border-top : solid 1px #e0e0e0 ;
@@ -68,8 +80,51 @@
   margin: 10px;
 }
 
+.box__btn_shodo--orange {
+  font-size: 14px;
+  position: relative;
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  color: #212529;
+  border-radius: 0.3rem;
+  color: #fff;
+  background-color: #eb6100;
+}
+.box__btn_shodo--orange:hover {
+  color: #fff;
+  background: #daa520;
+}
+
+.box__btn_tag--blue {
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+  padding: 4px;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  color: #212529;
+  border-radius: 0.3rem;
+  color: #fff;
+  background-color: #1e90ff;
+}
+.box__btn_tag--blue:hover {
+  color: #fff;
+  background: #6495ed;
+}
+
+.box__link {
+  text-decoration: none;
+}
+
 table{
   width: 100%;
+  background-color: white;
   border-collapse: collapse;
   border-spacing: 0;
   box-shadow: 0 0 4px gray;
@@ -86,3 +141,4 @@ table th,table td{
 table tr:nth-child(odd){
   background-color: #eee
 }
+

@@ -1,6 +1,23 @@
 <div class="body">
-  <div class= "post_form"><%= render 'public/post_items/post_form', post_item: @post_item %></div>
-  <div class="container">
+  <div class= "post_form">
+      <div class= "customer_info">
+        <h3>ユーザー情報</h3>
+        <table>
+            <thead>
+              <tr><th>ユーザーネーム</th><td><%= @customer.name %></td></tr>
+              <tr><th>投稿数</th><td><%= @post_items.where(customer_id: @customer_id).count %></td></tr>
+              <tr><td colspan="2"><%= link_to "いいね一覧", customer_favorite_path(params[:customer_id]) %></td></tr>
+              <% if customer_signed_in? %>
+                <% if @customer.id == current_customer.id %>
+                  <tr><td colspan="2"><%= link_to "情報編集", edit_customer_path(params[:customer_id]) %></td></tr>
+                <% end %>
+              <% end %>
+            </thead>
+        </table>
+    </div>
+    <%= render 'public/post_items/post_form', post_item: @post_item %>
+  </div>
+  <div class="container_top">
     <h3 class="h3"><%= @customer.name %>さんのいいね一覧</h3>
     <!--投稿一覧を表示するeach文です-->
     <% @favorites.each do |favorite| %>
@@ -27,4 +44,8 @@
       </div>
     <% end %>
   </div>
+
+  <div class="container_side-ranking">
+  <%= render 'public/homes/ranking_form' %><!--ランキング一覧(サイドバー)の部分テンプレートです-->
+</div>
 </div>

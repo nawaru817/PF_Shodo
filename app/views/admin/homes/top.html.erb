@@ -1,7 +1,9 @@
-<h2>管理者トップ</h2>
+<div class="post_form"></div>
 
 <div class="body">
-  <div class="container">
+
+  <div class="container_top">
+    <h2 class="h2">管理者トップ</h2>
     <h3 class="h3">投稿一覧</h3>
     <!--投稿一覧を表示するeach文です-->
     <% @post_items.each do |post_item| %>
@@ -32,7 +34,7 @@
     <% end %>
   </div>
 
-  <div class="container2">
+  <div class="container_side-ranking">
     <%= render 'public/homes/ranking_form' %><!--ランキング一覧(サイドバー)の部分テンプレートです-->
   </div>
 </div>

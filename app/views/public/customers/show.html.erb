@@ -1,3 +1,4 @@
+<body>
 <div class= "post_form">
   <div class= "customer_info">
     <h3>ユーザー情報</h3>
@@ -18,7 +19,7 @@
   <%= render 'public/post_items/post_form', post_item: @post_item %>
 </div>
 
-<div class="container">
+<div class="container_top">
   <h3 class="h3"><%= @customer.name %>さんの投稿一覧</h3>
   <!--ユーザ投稿一覧を表示するeach文です-->
   <% @post_items.each do |post_item| %>
@@ -52,3 +53,8 @@
     <% end %>
   <% end %>
 </div>
+
+<div class="container_side-ranking">
+  <%= render 'public/homes/ranking_form' %><!--ランキング一覧(サイドバー)の部分テンプレートです-->
+</div>
+</body>
