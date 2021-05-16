@@ -66,7 +66,7 @@ nav li:hover {
 
 .main {
   width: 100%; /* 横幅いっぱい */
-  height: 2000px; /* 高さ1400px（多めに設定） */
+  height: 1000px; /* 高さ1400px（多めに設定） */
   background-color: #f5f5f5;
   display: flex; /* Flexboxの利用 */
   justify-content: center; /* 子要素の横並び・中央寄せ */
@@ -85,7 +85,9 @@ textarea {
     height: 100px;
 }
 
-
-/*.header, nav, .main {*/
-/*  font-family: Chalkduster, "游ゴシック", Courier, "Segoe Print", sans-serif;*/
-/*}*/
+nav.pagination {
+  display: none;
+}
+.scroll-list {
+  padding: 0;
+}

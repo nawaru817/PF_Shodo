@@ -1,27 +1,55 @@
+<div class="post_form">
+  <div class= "customer_info">
+    <h3>ユーザー情報(管理者)</h3>
+    <table>
+        <thead>
+          <tr><th>ユーザーネーム</th><td><%= @customer.name %></td></tr>
+          <tr><th>投稿数</th><td><%= @post_items.where(customer_id: @customer_id).count %></td></tr>
+          <tr><td colspan="2"><%= link_to "いいね一覧", admin_customer_favorite_path(params[:customer_id]) %></td></tr>
+          <% if admin_signed_in? %>
+            <tr><td colspan="2"><%= link_to "情報編集", edit_admin_customer_path(params[:customer_id]) %></td></tr>
+          <% end %>
+        </thead>
+    </table>
+  </div>
+</div>
+
 <div class="body">
-  <div class="container">
+  <div class="container_top">
     <h3 class="h3"><%= @customer.name %>さんのいいね一覧(管理者)</h3>
     <!--投稿一覧を表示するeach文です-->
     <% @favorites.each do |favorite| %>
       <div class="box">
-        <div><span>商品名：<%= favorite.post_item.title %></span>　<span><%= link_to favorite.post_item.customer.name, customer_path(favorite.post_item.customer_id) %></span></div>
+        <div><strong><%= favorite.post_item.title %></strong><span class="box__customer_name"><%= link_to favorite.post_item.customer.name, admin_customer_path(favorite.post_item.customer_id), class: "box__link" %></span></div>
         <%= link_to admin_post_item_path(favorite.post_item.id) do %>
           <%= attachment_image_tag favorite.post_item, :image, :fill, 250, 150 %>
         <% end %>
-        <p>衝動ポイント<br><%= (favorite.post_item.caption).truncate(29) %></p>
-        <p>価格：<%= favorite.post_item.price %>円</p>
-        <p><%= link_to "衝動リンク", favorite.post_item.url %></p>
+        <span class="box__shodo_point">衝動ポイント</span><span class="box__shodo_price">￥<%= favorite.post_item.price %>円</span><br>
+        <span class="box__shodo_caption"><%= (favorite.post_item.caption).truncate(29) %></span><br>
+        <br>
         <p>
-          <%= link_to "#{favorite.post_item.post_comments.count} コメント", admin_post_item_path(favorite.post_item.id) %>
+          <%= link_to "#{favorite.post_item.post_comments.count} コメント", post_item_path(favorite.post_item.id) %>
           <%= favorite.post_item.favorites.count %> いいね
         </p>
         <div class="impressions">
           <span>閲覧数：<%=  favorite.post_item.impressionist_count %></span>
-          <% if admin_signed_in? %>
-            <span><%= link_to "削除する", post_item_path(favorite.post_item), method: :delete %></span>
+          <% if customer_signed_in? %>
+            <% if favorite.post_item.customer_id == current_customer.id %>
+              <span><%= link_to "削除する", post_item_path(favorite.post_item), method: :delete %></span>
+            <% end %>
           <% end %>
         </div>
+        <p><%= link_to "衝動リンク", favorite.post_item.url, class: "btn box__btn_shodo--orange" %></p>
+        <% @tag_maps.each do |tag_map| %>
+          <% if tag_map.post_item_id == favorite.post_item.id %>
+            <%= link_to tag_map.tag.tag_name, tag_path(tag_map.tag.id), class: "btn box__btn_tag--blue" %>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
+  </div>
+
+  <div class="container_side-ranking">
+    <%= render 'public/homes/ranking_form' %><!--ランキング一覧(サイドバー)の部分テンプレートです-->
   </div>
 </div>

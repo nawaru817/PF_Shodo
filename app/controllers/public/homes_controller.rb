@@ -2,9 +2,9 @@ class Public::HomesController < ApplicationController
 
   def top
     @post_item = PostItem.new
-    @post_items = PostItem.all.order(id: "DESC")
+    # @post_items = PostItem.all.order(id: "DESC")
     @tag_maps = TagMap.all
-    
+    @post_items = PostItem.page(params[:page]).order(id: "DESC").per(9)
   end
 
   def ranking

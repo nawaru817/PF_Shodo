@@ -12,7 +12,10 @@
   width: 280px;
   height: 750px;
   // background-color: red;
+}
 
+.customer_info {
+  width: 140%;
 }
 
 .post_form__item{
@@ -30,6 +33,10 @@
   margin: 0 auto;
   padding-left: 5%;
   }
+
+.container_customers {
+  width: 60%;
+}
 
 .container_side-ranking {
   width: 40%; /* 横幅いっぱい */
@@ -80,6 +87,28 @@
   margin: 10px;
 }
 
+.box__customer_name {
+  float: right;
+  margin-right: 20px;
+}
+
+.box__shodo_point {
+  font-size: 14px;
+  background-color: #f08080;
+  border-radius: 0.3rem;
+  padding: 2px;
+}
+
+.box__shodo_price {
+  float: right;
+  margin-right: 20px;
+}
+
+.box__shodo_caption {
+  text-decoration:underline;
+  text-decoration-color: red;
+}
+
 .box__btn_shodo--orange {
   font-size: 14px;
   position: relative;
@@ -93,6 +122,8 @@
   border-radius: 0.3rem;
   color: #fff;
   background-color: #eb6100;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .box__btn_shodo--orange:hover {
   color: #fff;
@@ -116,6 +147,25 @@
 .box__btn_tag--blue:hover {
   color: #fff;
   background: #6495ed;
+}
+
+.box__btn_delete--red {
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+  padding: 4px;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  color: #212529;
+  border-radius: 0.3rem;
+  color: #fff;
+  background-color: red;
+}
+.box__btn_delete--red:hover {
+  color: #fff;
+  background: #dc143c;
 }
 
 .box__link {

@@ -11,7 +11,8 @@ class Public::CustomersController < ApplicationController
   def favorite
     @post_item = PostItem.new
     @customer = Customer.find(params[:customer_id])
-    @favorites = @customer.favorites
+    @favorites = @customer.favorites.order(id: "DESC")
+    @tag_maps = TagMap.all
   end
 
   def edit

@@ -76,3 +76,6 @@ group :production do
 end
 
 gem 'ransack'
+
+gem 'jquery-rails'
+gem 'kaminari'

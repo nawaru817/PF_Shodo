@@ -9,6 +9,7 @@ class Admin::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @post_items = PostItem.all.order(id: "DESC")
     @customer_id = (params[:id]).to_i
+    @tag_maps = TagMap.all
   end
 
   def edit
@@ -25,6 +26,7 @@ class Admin::CustomersController < ApplicationController
     @post_item = PostItem.new
     @customer = Customer.find(params[:customer_id])
     @favorites = @customer.favorites
+    @tag_maps = TagMap.all
   end
 
   private
