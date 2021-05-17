@@ -1,70 +1,72 @@
-<div class= "post_form"><%= render 'public/post_items/post_form', post_item: @post_item %></div>
+<body>
+  <div class= "post_form"><%= render 'public/post_items/post_form', post_item: @post_item %></div>
 
-<div class="container_ranking">
-  <table class="container_ranking__ranking">
-    <thead>
-      <tr><th colspan= "4">いいねランキング</th></tr>
-      <% @favorite_ranks.each_with_index do |favorite_rank,i| %>
-        <tr>
-          <th><%= i + 1 %>位</th>
-          <td>
-            <%= link_to post_item_path(favorite_rank.id) do %>
-              <%= attachment_image_tag favorite_rank, :image, :fill, 60, 50 %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to favorite_rank.title, post_item_path(favorite_rank.id), class:"ranking__title" %>
-          </td>
-          <td>
-            <%= favorite_rank.favorites.count %> いいね
-          </td>
-        </tr>
-      <% end %>
-    </thead>
-  </table>
+  <div class="container_ranking">
+    <table class="container_ranking__ranking">
+      <thead>
+        <tr><th colspan= "4">いいねランキング</th></tr>
+        <% @favorite_ranks.each_with_index do |favorite_rank,i| %>
+          <tr>
+            <th><%= i + 1 %>位</th>
+            <td>
+              <%= link_to post_item_path(favorite_rank.id) do %>
+                <%= attachment_image_tag favorite_rank, :image, :fill, 60, 50 %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to favorite_rank.title, post_item_path(favorite_rank.id), class:"ranking__title" %>
+            </td>
+            <td>
+              <%= favorite_rank.favorites.count %> いいね
+            </td>
+          </tr>
+        <% end %>
+      </thead>
+    </table>
 
-  <table class="container_ranking__ranking">
-    <thead>
-      <tr><th colspan= "4">コメント数ランキング</th></tr>
-      <% @comment_ranks.each_with_index do |comment_rank,i| %>
-        <tr>
-          <th><%= i + 1 %>位</th>
-          <td>
-            <%= link_to post_item_path(comment_rank.id) do %>
-              <%= attachment_image_tag comment_rank, :image, :fill, 60, 50 %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to comment_rank.title, post_item_path(comment_rank.id), class:"ranking__title" %>
-          </td>
-          <td>
-            <%= comment_rank.post_comments.count %> コメント
-          </td>
-        </tr>
-      <% end %>
-    </thead>
-  </table>
+    <table class="container_ranking__ranking">
+      <thead>
+        <tr><th colspan= "4">コメント数ランキング</th></tr>
+        <% @comment_ranks.each_with_index do |comment_rank,i| %>
+          <tr>
+            <th><%= i + 1 %>位</th>
+            <td>
+              <%= link_to post_item_path(comment_rank.id) do %>
+                <%= attachment_image_tag comment_rank, :image, :fill, 60, 50 %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to comment_rank.title, post_item_path(comment_rank.id), class:"ranking__title" %>
+            </td>
+            <td>
+              <%= comment_rank.post_comments.count %> コメント
+            </td>
+          </tr>
+        <% end %>
+      </thead>
+    </table>
 
-  <table class="container_ranking__ranking">
-    <thead>
-      <tr><th colspan= "4">閲覧数ランキング</th></tr>
-      <% @impression_ranks.each_with_index do |impression_rank,i| %>
-        <tr>
-          <th><%= i + 1 %>位</th>
-          <td>
-            <%= link_to post_item_path(impression_rank.id) do %>
-              <%= attachment_image_tag impression_rank, :image, :fill, 60, 50 %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to impression_rank.title, post_item_path(impression_rank.id), class:"ranking__title" %>
-          </td>
-          <td>
-            <%= impression_rank.impressionist_count %>回
-          </td>
-        </tr>
-      <% end %>
-    </thead>
-  </table>
+    <table class="container_ranking__ranking">
+      <thead>
+        <tr><th colspan= "4">閲覧数ランキング</th></tr>
+        <% @impression_ranks.each_with_index do |impression_rank,i| %>
+          <tr>
+            <th><%= i + 1 %>位</th>
+            <td>
+              <%= link_to post_item_path(impression_rank.id) do %>
+                <%= attachment_image_tag impression_rank, :image, :fill, 60, 50 %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to impression_rank.title, post_item_path(impression_rank.id), class:"ranking__title" %>
+            </td>
+            <td>
+              <%= impression_rank.impressionist_count %>回
+            </td>
+          </tr>
+        <% end %>
+      </thead>
+    </table>
 
-</div>
+  </div>
+</body>
