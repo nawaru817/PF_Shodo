@@ -16,7 +16,7 @@
               <% end %>
             </td>
             <td>
-              <%= link_to favorite_rank.title, post_item_path(favorite_rank.id) %>
+              <%= link_to favorite_rank.title, post_item_path(favorite_rank.id), class:"ranking__title" %>
             </td>
             <td>
               <%= favorite_rank.favorites.count %> いいね
@@ -38,7 +38,7 @@
               <% end %>
             </td>
             <td>
-              <%= link_to comment_rank.title, post_item_path(comment_rank.id) %>
+              <%= link_to comment_rank.title, post_item_path(comment_rank.id), class:"ranking__title" %>
             </td>
             <td>
               <%= comment_rank.post_comments.count %> コメント
@@ -60,7 +60,7 @@
               <% end %>
             </td>
             <td>
-              <%= link_to impression_rank.title, post_item_path(impression_rank.id) %>
+              <%= link_to impression_rank.title, post_item_path(impression_rank.id), class:"ranking__title" %>
             </td>
             <td>
               <%= impression_rank.impressionist_count %>回
@@ -71,9 +71,9 @@
     </table>
 
 <div class="form__tag">
-  <div>タグ一覧</div>
+  <h3>タグ一覧</h3>
   <% tags = Tag.all %>
   <% tags.each do |tag| %>
-    <div><%= link_to tag.tag_name + "(#{tag.post_items.count})", tag_path(tag) %></div>
+    <li><%= link_to tag.tag_name + "(#{tag.post_items.count})", tag_path(tag), class: "form__tag__list" %></li>
   <% end %>
 </div>

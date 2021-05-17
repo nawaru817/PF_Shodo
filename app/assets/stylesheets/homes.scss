@@ -9,13 +9,24 @@
   position: -webkit-sticky;
   position: sticky;
   top: 120px;
-  width: 280px;
+  width: 25%;
   height: 750px;
   // background-color: red;
 }
+.post_items {
+  display: flex;
+  flex-direction: column;
+}
+.post_items__header {
+  margin-left: 65px;
+}
 
 .customer_info {
-  width: 140%;
+  width: 100%;
+}
+
+.customer_info__link {
+  text-decoration: none;
 }
 
 .post_form__item{
@@ -73,6 +84,19 @@
   width: 80%;
   margin-top: 10px;
   margin-bottom: 50px;
+}
+
+.ranking__title {
+  text-decoration: none;
+}
+
+div.form__tag {
+  width: 80%;
+  height: 300px;
+  overflow: scroll;
+}
+.form__tag__list {
+  text-decoration: none;
 }
 
 .box {
@@ -192,3 +216,6 @@ table tr:nth-child(odd){
   background-color: #eee
 }
 
+.container_edit {
+  width: 30%;
+}

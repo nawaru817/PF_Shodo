@@ -1,17 +1,18 @@
-<h2>衝動編集</h2>
-
-<%= form_with model: @post_item, local:true do |f| %>
-  <div>
-    <table>
-        <thead>
-          <tr><th>商品名</th><td><%= f.text_field :title, autofocus: true %></td></tr>
-          <tr><th>衝動ポイント</th><td><%= f.text_area :caption, autofocus: true %></td></tr>
-          <tr><th>価格</th><td><%= f.text_field :price, autofocus: true %></td></tr>
-          <tr><th>衝動リンクURL</th><td><%= f.text_field :url, autofocus: true %></td></tr>
-          <tr><th>画像</th><td><%= f.attachment_field :image %></td></tr>
-          <tr><th>タグ</th><td><%= f.text_field :tag_name, value: @tag_list %></td></tr>
-          <tr><td colspan="2"><%= f.submit "変更を保存" %></td></tr>
-        </thead>
-    </table>
-  </div>
-<% end %>
+<div class="container_edit">
+  <h2>衝動編集</h2>
+  <%= form_with model: @post_item, local:true do |f| %>
+    <div>
+      <table>
+          <thead>
+            <tr><th>商品名</th><td><%= f.text_field :title, autofocus: true %></td></tr>
+            <tr><th>衝動ポイント</th><td><%= f.text_area :caption, autofocus: true %></td></tr>
+            <tr><th>価格</th><td><%= f.text_field :price, autofocus: true %></td></tr>
+            <tr><th>衝動リンクURL</th><td><%= f.text_field :url, autofocus: true %></td></tr>
+            <tr><th>画像</th><td><%= f.attachment_field :image %></td></tr>
+            <tr><th>タグ</th><td><%= f.text_field :tag_name, value: @tag_list %></td></tr>
+            <tr><td colspan="2"><%= f.submit "変更を保存" %></td></tr>
+          </thead>
+      </table>
+    </div>
+  <% end %>
+</div>

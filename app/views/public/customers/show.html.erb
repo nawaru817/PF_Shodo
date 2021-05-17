@@ -6,10 +6,10 @@
         <thead>
           <tr><th>ユーザーネーム</th><td><%= @customer.name %></td></tr>
           <tr><th>投稿数</th><td><%= @post_items.where(customer_id: @customer_id).count %></td></tr>
-          <tr><td colspan="2"><%= link_to "いいね一覧", customer_favorite_path(params[:id]) %></td></tr>
+          <tr><td colspan="2"><%= link_to "いいね一覧", customer_favorite_path(params[:id]), class: "customer_info__link" %></td></tr>
           <% if customer_signed_in? %>
             <% if @customer.id == current_customer.id %>
-              <tr><td colspan="2"><%= link_to "情報編集", edit_customer_path(params[:id]) %></td></tr>
+              <tr><td colspan="2"><%= link_to "情報編集", edit_customer_path(params[:id]), class: "customer_info__link" %></td></tr>
             <% end %>
           <% end %>
         </thead>

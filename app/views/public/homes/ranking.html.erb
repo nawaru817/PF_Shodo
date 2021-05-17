@@ -13,7 +13,7 @@
             <% end %>
           </td>
           <td>
-            <%= link_to favorite_rank.title, post_item_path(favorite_rank.id) %>
+            <%= link_to favorite_rank.title, post_item_path(favorite_rank.id), class:"ranking__title" %>
           </td>
           <td>
             <%= favorite_rank.favorites.count %> いいね
@@ -35,7 +35,7 @@
             <% end %>
           </td>
           <td>
-            <%= link_to comment_rank.title, post_item_path(comment_rank.id) %>
+            <%= link_to comment_rank.title, post_item_path(comment_rank.id), class:"ranking__title" %>
           </td>
           <td>
             <%= comment_rank.post_comments.count %> コメント
@@ -57,7 +57,7 @@
             <% end %>
           </td>
           <td>
-            <%= link_to impression_rank.title, post_item_path(impression_rank.id) %>
+            <%= link_to impression_rank.title, post_item_path(impression_rank.id), class:"ranking__title" %>
           </td>
           <td>
             <%= impression_rank.impressionist_count %>回
