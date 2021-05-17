@@ -1,0 +1,46 @@
+// Place all the styles related to the public/PostItems controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container-post-item {
+  display: flex;
+  width: 500px;
+}
+
+.post-item__header {
+  display: flex;
+}
+.post-item__header__date {
+  margin-top: 15px;
+  margin-left: 200px;
+}
+
+.comment {
+  width: 500px;
+  margin-left: 100px;
+}
+
+.comment__impressions {
+  background-color: #4169e1;
+  border-radius: 3px;
+  padding: 2px 4px;
+}
+.comment__count {
+  background-color: #2e8b57;
+  border-radius: 3px;
+  padding: 2px 4px;
+}
+.comment__favorite {
+  background-color: #ff69b4;
+  border-radius: 3px;
+  padding: 2px 4px;
+}
+
+.comment__post {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.comment__post__font {
+  font-size: 13px;
+  text-decoration: none;
+}

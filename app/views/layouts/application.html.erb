@@ -12,94 +12,96 @@
   <body>
     <div class="header">
       <span class="header__logo"><%= link_to image_tag("logo2.png", alt: "logo2", id: "assets", class: "image", width: "180px"), root_path %></span>
-    <% if customer_signed_in? %>
-      <nav class="header__navbar">
-        <ul>
-          <li>
-            <%= link_to "トップページ", root_path, class: "header__navbar--item" %>
-          </li>
-          <li>
-            <%= link_to "ランキング", ranking_path, class: "header__navbar--item" %>
-          </li>
-          <li>
-            <%= link_to "マイページ", customer_path(current_customer.id), class: "header__navbar--item" %>
-          </li>
-          <li>
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "header__navbar--item" %>
-          </li>
-        </ul>
-        <div class="header__search">
-          <%= search_form_for @search, url: search_post_item_path do |f| %>
-            <!--nameカラムに対して部分一致検索ができる-->
-            <%= f.label :title_cont, "タイトル検索" %>
-            <%= f.search_field :title_cont %>
+      <% if customer_signed_in? %>
+        <nav class="header__navbar">
+          <ul>
+            <li>
+              <%= link_to "トップページ", root_path, class: "header__navbar--item" %>
+            </li>
+            <li>
+              <%= link_to "ランキング", ranking_path, class: "header__navbar--item" %>
+            </li>
+            <li>
+              <%= link_to "マイページ", customer_path(current_customer.id), class: "header__navbar--item" %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "header__navbar--item" %>
+            </li>
+          </ul>
+          <div class="header__search">
+            <span class="header__search__customer_name--green">ログインユーザー：<%= link_to current_customer.name, customer_path(current_customer), class: "header__search__customer_name--white" %></span>
+            <%= search_form_for @search, url: search_post_item_path do |f| %>
+              <!--nameカラムに対して部分一致検索ができる-->
+              <%= f.label :title_cont, "タイトル検索" %>
+              <%= f.search_field :title_cont %>
 
-            <!--検索ボタン-->
-            <span class="actions"><%= f.submit "検索" %></span>
-          <% end %>
-        </div>
-      </nav>
-    <% elsif admin_signed_in? %>
-      <nav class="header__navbar">
-        <ul>
-          <li>
-            <%= link_to "トップページ", admin_top_path, class: "header__navbar--item" %>
-          </li>
-          <li>
-            <%= link_to "ランキング", ranking_path, class: "header__navbar--item" %>
-          </li>
-          <li>
-            <%= link_to "ユーザー一覧", admin_customers_path, class: "header__navbar--item" %>
-          </li>
-          <li>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "header__navbar--item" %>
-          </li>
-        </ul>
-        <div class="header__search">
-          <%= search_form_for @search, url: search_post_item_path do |f| %>
-            <!--nameカラムに対して部分一致検索ができる-->
-            <%= f.label :title_cont, "タイトル検索" %>
-            <%= f.search_field :title_cont %>
+              <!--検索ボタン-->
+              <span class="actions"><%= f.submit "検索" %></span>
+            <% end %>
+          </div>
+        </nav>
+      <% elsif admin_signed_in? %>
+        <nav class="header__navbar">
+          <ul>
+            <li>
+              <%= link_to "トップページ", admin_top_path, class: "header__navbar--item" %>
+            </li>
+            <li>
+              <%= link_to "ランキング", ranking_path, class: "header__navbar--item" %>
+            </li>
+            <li>
+              <%= link_to "ユーザー一覧", admin_customers_path, class: "header__navbar--item" %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "header__navbar--item" %>
+            </li>
+          </ul>
+          <div class="header__search">
+            <span class="header__search__admin--red">ログインユーザー：<%= link_to "管理者", admin_top_path, class: "header__search__admin--white" %></span>
+            <%= search_form_for @search, url: search_post_item_path do |f| %>
+              <!--nameカラムに対して部分一致検索ができる-->
+              <%= f.label :title_cont, "タイトル検索" %>
+              <%= f.search_field :title_cont %>
 
-            <!--検索ボタン-->
-            <span class="actions"><%= f.submit "検索" %></span>
-          <% end %>
-        </div>
-      </nav>
-    <% else %>
-      <nav class="header__navbar">
-        <ul>
-          <li>
-            <%= link_to "トップページ", root_path, class: "header__navbar--item" %>
-          </li>
-          <li>
-            <%= link_to "ランキング", ranking_path, class: "header__navbar--item" %>
-          </li>
-          <li>
-            <%= link_to "新規登録", new_customer_registration_path, class: "header__navbar--item" %>
-          </li>
-          <li>
-            <%= link_to "ログイン", new_customer_session_path, class: "header__navbar--item" %>
-          </li>
-        </ul>
-        <div class="header__search">
-          <%= search_form_for @search, url: search_post_item_path do |f| %>
-            <!--nameカラムに対して部分一致検索ができる-->
-            <%= f.label :title_cont, "タイトル検索" %>
-            <%= f.search_field :title_cont %>
+              <!--検索ボタン-->
+              <span class="actions"><%= f.submit "検索" %></span>
+            <% end %>
+          </div>
+        </nav>
+      <% else %>
+        <nav class="header__navbar">
+          <ul>
+            <li>
+              <%= link_to "トップページ", root_path, class: "header__navbar--item" %>
+            </li>
+            <li>
+              <%= link_to "ランキング", ranking_path, class: "header__navbar--item" %>
+            </li>
+            <li>
+              <%= link_to "新規登録", new_customer_registration_path, class: "header__navbar--item" %>
+            </li>
+            <li>
+              <%= link_to "ログイン", new_customer_session_path, class: "header__navbar--item" %>
+            </li>
+          </ul>
+          <div class="header__search">
+            <%= search_form_for @search, url: search_post_item_path do |f| %>
+              <!--nameカラムに対して部分一致検索ができる-->
+              <%= f.label :title_cont, "タイトル検索" %>
+              <%= f.search_field :title_cont %>
 
-            <!--検索ボタン-->
-            <span class="actions"><%= f.submit "検索" %></span>
-          <% end %>
-        </div>
-      </nav>
-    <% end %>
-
-
-
-    <div class="main">
-    <%= yield %>
+              <!--検索ボタン-->
+              <span class="actions"><%= f.submit "検索" %></span>
+            <% end %>
+          </div>
+        </nav>
+      <% end %>
     </div>
-
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      ©2021 衝動買いマーケット.All Rights Resarved.
+    </footer>
   </body>
 </html>
