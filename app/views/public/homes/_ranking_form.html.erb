@@ -10,14 +10,25 @@
         <% favorite_ranks.each_with_index do |favorite_rank,i| %>
           <tr>
             <th><%= i + 1 %>位</th>
-            <td>
-              <%= link_to post_item_path(favorite_rank.id) do %>
-                <%= attachment_image_tag favorite_rank, :image, :fill, 60, 50 %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to favorite_rank.title, post_item_path(favorite_rank.id), class:"ranking__title" %>
-            </td>
+            <% if admin_signed_in? %>
+              <td>
+                <%= link_to admin_post_item_path(favorite_rank.id) do %>
+                  <%= attachment_image_tag favorite_rank, :image, :fill, 60, 50 %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to favorite_rank.title, admin_post_item_path(favorite_rank.id), class:"ranking__title" %>
+              </td>
+            <% else %>
+              <td>
+                <%= link_to post_item_path(favorite_rank.id) do %>
+                  <%= attachment_image_tag favorite_rank, :image, :fill, 60, 50 %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to favorite_rank.title, post_item_path(favorite_rank.id), class:"ranking__title" %>
+              </td>
+            <% end %>
             <td>
               <%= favorite_rank.favorites.count %> いいね
             </td>
@@ -32,14 +43,25 @@
         <% comment_ranks.each_with_index do |comment_rank,i| %>
           <tr>
             <th><%= i + 1 %>位</th>
-            <td>
-              <%= link_to post_item_path(comment_rank.id) do %>
-                <%= attachment_image_tag comment_rank, :image, :fill, 60, 50 %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to comment_rank.title, post_item_path(comment_rank.id), class:"ranking__title" %>
-            </td>
+            <% if admin_signed_in? %>
+              <td>
+                <%= link_to admin_post_item_path(comment_rank.id) do %>
+                  <%= attachment_image_tag comment_rank, :image, :fill, 60, 50 %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to comment_rank.title, admin_post_item_path(comment_rank.id), class:"ranking__title" %>
+              </td>
+            <% else %>
+              <td>
+                <%= link_to post_item_path(comment_rank.id) do %>
+                  <%= attachment_image_tag comment_rank, :image, :fill, 60, 50 %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to comment_rank.title, post_item_path(comment_rank.id), class:"ranking__title" %>
+              </td>
+            <% end %>
             <td>
               <%= comment_rank.post_comments.count %> コメント
             </td>
@@ -54,14 +76,25 @@
         <% impression_ranks.each_with_index do |impression_rank,i| %>
           <tr>
             <th><%= i + 1 %>位</th>
-            <td>
-              <%= link_to post_item_path(impression_rank.id) do %>
-                <%= attachment_image_tag impression_rank, :image, :fill, 60, 50 %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to impression_rank.title, post_item_path(impression_rank.id), class:"ranking__title" %>
-            </td>
+            <% if admin_signed_in? %>
+              <td>
+                <%= link_to admin_post_item_path(impression_rank.id) do %>
+                  <%= attachment_image_tag impression_rank, :image, :fill, 60, 50 %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to impression_rank.title, admin_post_item_path(impression_rank.id), class:"ranking__title" %>
+              </td>
+            <% else %>
+              <td>
+                <%= link_to post_item_path(impression_rank.id) do %>
+                  <%= attachment_image_tag impression_rank, :image, :fill, 60, 50 %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to impression_rank.title, post_item_path(impression_rank.id), class:"ranking__title" %>
+              </td>
+            <% end %>
             <td>
               <%= impression_rank.impressionist_count %>回
             </td>
