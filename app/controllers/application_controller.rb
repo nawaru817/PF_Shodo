@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def set_search
     # 検索オブジェクト
-    @search = PostItem.order(id: "DESC").ransack(params[:q])
+    @search = PostItem.page(params[:page]).order(id: "DESC").per(6).ransack(params[:q])
     # 検索結果
     @post_items = @search.result
   end
