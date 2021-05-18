@@ -58,7 +58,7 @@
           <tr>
             <td colspan="2">
               <% @post_item.tags.each do |tag| %>
-                <%= link_to tag.tag_name, admin_tag_path(tag.id), class: "btn box__btn_tag--blue" %>
+                <%= link_to tag.tag_name, admin_tag_path(tag.id), class: "btn box__btn-tag--blue" %>
               <% end %>
             </td>
           </tr>

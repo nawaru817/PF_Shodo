@@ -33,7 +33,7 @@
             </li>
           </ul>
           <div class="header__search">
-            <span class="header__search__customer_name--green">ログインユーザー：<%= link_to current_customer.name, customer_path(current_customer), class: "header__search__customer_name--white" %></span>
+            <span class="header__search__customer-name--green">ログインユーザー：<%= link_to current_customer.name, customer_path(current_customer), class: "header__search__customer-name--white" %></span>
             <%= search_form_for @search, url: search_post_item_path do |f| %>
               <!--nameカラムに対して部分一致検索ができる-->
               <%= f.label :title_cont, "タイトル検索" %>

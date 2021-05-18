@@ -2,40 +2,44 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.post_form {
+.post-form {
   position: -webkit-sticky;
   position: sticky;
-  top: 120px;
+  top: 140px;
   width: 25%;
-  height: 750px;
+  height: 600px;
   // background-color: red;
 }
-.post_form__flash {
+.post-form__flash {
   color: red;
 }
 
-.post_items {
+.post-form__item{
+  padding-left: 30px;
+}
+
+
+.post-items {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-.post_items__header {
+.post-items__header {
   margin-left: 65px;
 }
 
-.customer_info {
+
+.customer-info {
   width: 100%;
+  margin-bottom: 15px;
 }
 
-.customer_info__link {
+.customer-info__link {
   text-decoration: none;
 }
 
-.post_form__item{
-  padding-left: 30px;
-}
 
-.container_top {
+.container-top {
   width: 100%; /* 横幅いっぱい */
   // height: 1400px; /* 高さ1400px（多めに設定） */
   // background-color: #eee8aa; /* 背景色green */
@@ -47,11 +51,11 @@
   padding-left: 5%;
   }
 
-.container_customers {
+.container-customers {
   width: 60%;
 }
 
-.container_side-ranking {
+.container-side-ranking {
   width: 40%; /* 横幅いっぱい */
   // height: 1400px; /* 高さ1400px（多めに設定） */
   // background-color: blue; /* 背景色green */
@@ -61,7 +65,7 @@
   margin: 0 auto;
 }
 
-.container_ranking {
+.container-ranking {
   width: 100%; /* 横幅いっぱい */
   // height: 1400px; /* 高さ1400px（多めに設定） */
   // background-color: green; /* 背景色green */
@@ -69,9 +73,12 @@
   align-content: flex-start;
   margin: 0 auto;
 }
-
-.container_ranking__ranking {
+.container-ranking__table {
   margin-right: 10px;
+}
+
+.container-edit {
+  width: 30%;
 }
 
 .h3 {
@@ -81,6 +88,7 @@
 .h2 {
   width: 100%;
 }
+
 
 .ranking {
   width: 80%;
@@ -92,14 +100,16 @@
   text-decoration: none;
 }
 
-div.form__tag {
+
+.tag {
   width: 80%;
   height: 300px;
   overflow: scroll;
 }
-.form__tag__list {
+.tag__list {
   text-decoration: none;
 }
+
 
 .box {
   height: 420px;
@@ -113,29 +123,29 @@ div.form__tag {
   margin: 10px;
 }
 
-.box__customer_name {
+.box__customer-name {
   float: right;
   margin-right: 20px;
 }
 
-.box__shodo_point {
+.box__shodo-point {
   font-size: 14px;
   background-color: #f08080;
   border-radius: 0.3rem;
   padding: 2px;
 }
 
-.box__shodo_price {
+.box__shodo-price {
   float: right;
   margin-right: 20px;
 }
 
-.box__shodo_caption {
+.box__shodo-caption {
   text-decoration:underline;
   text-decoration-color: red;
 }
 
-.box__btn_shodo--orange {
+.box__btn-shodo--orange {
   font-size: 14px;
   position: relative;
   display: inline-block;
@@ -151,12 +161,12 @@ div.form__tag {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.box__btn_shodo--orange:hover {
+.box__btn-shodo--orange:hover {
   color: #fff;
   background: #daa520;
 }
 
-.box__btn_tag--blue {
+.box__btn-tag--blue {
   font-size: 12px;
   position: relative;
   display: inline-block;
@@ -170,12 +180,12 @@ div.form__tag {
   color: #fff;
   background-color: #1e90ff;
 }
-.box__btn_tag--blue:hover {
+.box__btn-tag--blue:hover {
   color: #fff;
   background: #6495ed;
 }
 
-.box__btn_delete--red {
+.box__btn-delete--red {
   font-size: 12px;
   position: relative;
   display: inline-block;
@@ -189,7 +199,7 @@ div.form__tag {
   color: #fff;
   background-color: red;
 }
-.box__btn_delete--red:hover {
+.box__btn-delete--red:hover {
   color: #fff;
   background: #dc143c;
 }
@@ -197,6 +207,7 @@ div.form__tag {
 .box__link {
   text-decoration: none;
 }
+
 
 table{
   width: 100%;
@@ -216,8 +227,4 @@ table th,table td{
 
 table tr:nth-child(odd){
   background-color: #eee
-}
-
-.container_edit {
-  width: 30%;
 }
