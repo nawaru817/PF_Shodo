@@ -1,4 +1,5 @@
 class Admin::PostItemsController < ApplicationController
+  before_action :authenticate_admin!
 
   def edit
     @post_item = PostItem.find(params[:id])

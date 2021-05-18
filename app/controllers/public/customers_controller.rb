@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!, only: [:edit]
+
 
   def show
     @post_item = PostItem.new
@@ -19,6 +21,9 @@ class Public::CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(params[:id])
+    if current_customer.id != @customer.id
+      redirect_to root_path
+    end
   end
 
   def update

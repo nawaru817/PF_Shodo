@@ -1,4 +1,5 @@
 class Admin::PostCommentsController < ApplicationController
+  
 
   def destroy
     PostComment.find_by(id: params[:id], post_item_id: params[:post_item_id]).destroy

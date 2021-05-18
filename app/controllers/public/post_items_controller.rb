@@ -1,4 +1,5 @@
 class Public::PostItemsController < ApplicationController
+  before_action :authenticate_customer!, only: [:edit]
 
   def create
     @post_item = PostItem.new(post_item_params)
@@ -12,6 +13,9 @@ class Public::PostItemsController < ApplicationController
   def edit
     @post_item = PostItem.find(params[:id])
     @tag_list = @post_item.tags.pluck(:tag_name).join(" ")
+    if current_customer.id != @post_item.customer_id
+      redirect_to root_path
+    end
   end
 
   def update
