@@ -1,32 +1,35 @@
 <div class="post_form__item">
-<h3>投稿フォーム</h3>
+  <% if post_item.errors.any? %>
+    <div class="post_form__flash"><%= flash[:notice] = "※タイトル、衝動ポイント、価格を入力してください" %></div>
+  <% end %>
+  <h3>投稿フォーム</h3>
 
-<% if customer_signed_in? %>
+  <% if customer_signed_in? %>
 
-  <%= form_with model: post_item, local:true do |f| %>
+    <%= form_with model: post_item, local:true do |f| %>
 
-    <div>タイトル</div>
-    <%= f.text_field :title %>
-    <div>衝動ポイント</div>
-    <%= f.text_area :caption %>
-    <div>価格</div>
-    <%= f.text_field :price %>
-    <div>衝動リンクURL</div>
-    <%= f.text_field :url %>
-    <div>画像</div>
-    <div><%= f.attachment_field :image %></div>
-    <br>
-    <div>スペースで複数タグ付け</div>
-    <div>例：音楽 文芸 スポーツ</div>
-    <div><%= f.text_field :tag_name %></div>
-    <p><%= f.submit '投稿する' %></p>
+      <div>タイトル</div>
+      <%= f.text_field :title %>
+      <div>衝動ポイント</div>
+      <%= f.text_area :caption %>
+      <div>価格</div>
+      <%= f.text_field :price %>
+      <div>衝動リンクURL</div>
+      <%= f.text_field :url %>
+      <div>画像</div>
+      <div><%= f.attachment_field :image %></div>
+      <br>
+      <div>スペースで複数タグ付け</div>
+      <div>例：音楽 文芸 スポーツ</div>
+      <div><%= f.text_field :tag_name %></div>
+      <p><%= f.submit '投稿する' %></p>
+
+    <% end %>
+
+  <% else %>
+
+    <div>投稿するには<%= link_to "ログイン", new_customer_session_path %>してください。</div>
+    <div>会員登録がお済みでない方は<%= link_to "こちら", new_customer_registration_path %>から</div>
 
   <% end %>
-
-<% else %>
-
-  <div>投稿するには<%= link_to "ログイン", new_customer_session_path %>してください。</div>
-  <div>会員登録がお済みでない方は<%= link_to "こちら", new_customer_registration_path %>から</div>
-
-<% end %>
 </div>

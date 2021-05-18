@@ -9,7 +9,7 @@ class Admin::CustomersController < ApplicationController
     @post_item = PostItem.new
     @customer = Customer.find(params[:id])
     @post_items_count = PostItem.all.order(id: "DESC")
-    @post_items = PostItem.page(params[:page]).order(id: "DESC").per(7)
+    @post_items = PostItem.page(params[:page]).order(id: "DESC").per(6)
     @customer_id = (params[:id]).to_i
     @tag_maps = TagMap.all
   end

@@ -9,6 +9,10 @@ class PostItem < ApplicationRecord
 
   is_impressionable counter_cache: true
 
+  validates :title, presence: true
+  validates :caption, presence: true
+  validates :price, presence: true
+
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?
   end
