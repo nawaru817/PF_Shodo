@@ -62,7 +62,7 @@
           </ul>
           <div class="header__search">
             <span class="header__search__admin--red">ログインユーザー：<%= link_to "管理者", admin_top_path, class: "header__search__admin--white" %></span>
-            <%= search_form_for @search, url: search_post_item_path do |f| %>
+            <%= search_form_for @search, url: admin_search_post_item_path do |f| %>
               <!--nameカラムに対して部分一致検索ができる-->
               <%= f.label :title_cont, "タイトル検索" %>
               <%= f.search_field :title_cont %>

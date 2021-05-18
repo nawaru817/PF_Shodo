@@ -32,9 +32,8 @@ class Public::PostItemsController < ApplicationController
 
   def show
     @post_item = PostItem.find(params[:id])
-    # impressionist(@post_item, nil, unique: [:session_hash, :ip_address])
+    @no_comment_flag = @post_item.post_comments.exists?
     impressionist(@post_item, nil, :unique => [:impressionable_id, :ip_address])
-    # impressionist(@post_item)
     @post_comment = PostComment.new
   end
 
@@ -47,9 +46,6 @@ class Public::PostItemsController < ApplicationController
   def search_post_item
     @post_item = PostItem.new
     @tag_maps = TagMap.all
-    @impression_ranks = PostItem.all.order(impressions_count: "DESC").limit(5)
-    @favorite_ranks = PostItem.find(Favorite.group(:post_item_id).order('count(post_item_id) desc').limit(5).pluck(:post_item_id))
-    @comment_ranks =PostItem.find(PostComment.group(:post_item_id).order('count(post_item_id) desc').limit(5).pluck(:post_item_id))
   end
 
    private

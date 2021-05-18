@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :edit, :update, :show]do
       get 'favorite', to: 'customers#favorite'
     end
+    get 'search_post_item', to: 'post_items#search_post_item'
+    resources :tags, only:[:show]
   end
 
   devise_for :customers

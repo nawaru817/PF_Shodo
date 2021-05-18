@@ -107,6 +107,10 @@
   <h3>タグ一覧</h3>
   <% tags = Tag.all %>
   <% tags.each do |tag| %>
-    <li><%= link_to tag.tag_name + "(#{tag.post_items.count})", tag_path(tag), class: "form__tag__list" %></li>
+    <% if admin_signed_in? %>
+      <li><%= link_to tag.tag_name + "(#{tag.post_items.count})", admin_tag_path(tag), class: "form__tag__list" %></li>
+    <% else %>
+      <li><%= link_to tag.tag_name + "(#{tag.post_items.count})", tag_path(tag), class: "form__tag__list" %></li>
+    <% end %>
   <% end %>
 </div>

@@ -28,6 +28,11 @@ class Admin::PostItemsController < ApplicationController
     redirect_to admin_top_path
   end
 
+  def search_post_item
+    @post_item = PostItem.new
+    @tag_maps = TagMap.all
+  end
+
    private
 
   def post_item_params

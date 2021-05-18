@@ -1,4 +1,4 @@
-class Public::TagsController < ApplicationController
+class Admin::TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
