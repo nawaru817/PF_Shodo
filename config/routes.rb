@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
     get 'ranking', to: 'homes#ranking'
 
+    get 'post_items', to: 'homes#top'
     resources :post_items, only: [:create, :edit, :update, :show, :destroy]do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
