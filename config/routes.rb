@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  #管理者用ルートです
   devise_for :admin, controllers: {
       sessions: 'admin/admins/sessions',
       registrations: 'admin/admins/registrations',
@@ -19,9 +20,11 @@ Rails.application.routes.draw do
     resources :tags, only:[:show]
   end
 
+  #ユーザー用ルートです
   devise_for :customers
   scope module: :public do
     root to: 'homes#top'
+    get 'about', to: 'homes#about'
     post 'guest_sign_in', to: 'homes#guest_sign_in'
 
     get 'ranking', to: 'homes#ranking'

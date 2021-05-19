@@ -6,6 +6,9 @@ class Public::HomesController < ApplicationController
     @post_items = PostItem.page(params[:page]).order(id: "DESC").per(6)
   end
 
+  def about
+  end
+
   # ゲストログイン用のインスタンスメソッドです
   def guest_sign_in
     customer = Customer.find_or_create_by!(email: 'guest@example.com') do |customer|

@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
+// 主にトップ画面に表示する要素のCSSが記述されています。
+// 投稿詳細画面のCSSは主に stylesheets/post_items.scss に記述されています。
+
+
 .post-form {
   position: -webkit-sticky;
   position: sticky;
@@ -228,4 +234,64 @@ table th,table td{
 
 table tr:nth-child(odd){
   background-color: #eee
+}
+
+
+.about {
+  display: column;
+  text-align: center;
+}
+
+.about__h1 {
+  margin-bottom: 50px;
+}
+
+.about__text {
+
+}
+
+.about__text__shodo {
+  margin-top: 40px;
+  margin-bottom: 80px;
+}
+
+.about__text__risei {
+  margin-bottom: 20px;
+}
+
+.about__text__miryoku {
+  margin-top: 20px;
+}
+
+.about__text__start {
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.about__text--big {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.about__text--middle {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.about__text--buy-middle {
+  font-size: 20px;
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.about__text--youkoso-big {
+  font-size: 25px;
+  margin-top: 300px;
+}
+
+.about__text--market-big {
+  font-size: 30px;
+  margin-bottom: 300px;
 }

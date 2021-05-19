@@ -14,6 +14,9 @@
  *= require_self
  */
 
+
+/*主にヘッダー・フッター要素のCSSが記述されています*/
+
 * {
   margin: 0;
   padding: 0;
@@ -38,17 +41,20 @@ body {
 
 .header__navbar--item {
 	display: block;
-	border-radius: 4px;
-	padding: 12px 24px;
+  font-size: 14px;
+	padding: 12px 12px;
 	color: white;
 	text-decoration: none;
+	border-right: solid 1px;
+
 }
 
 .header__search {
   display: flex;
   justify-content: flex-end;
   margin-right: 30px;
-  padding-bottom: 15px;
+  padding-top: 3px;
+  padding-bottom: 20px;
 }
 
 .header__search__customer-name--green {
