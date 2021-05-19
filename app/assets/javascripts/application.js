@@ -18,6 +18,9 @@
 //= require turbolinks
 //= require_tree .
 
+/*global $*/
+/*global scrollHeight $*/
+/*global scrollPosition $*/
 $(window).on('scroll', function() {
   scrollHeight = $(document).height();
   scrollPosition = $(window).height() + $(window).scrollTop();
