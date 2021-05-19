@@ -9,19 +9,19 @@
     <%= form_with model: post_item, local:true do |f| %>
 
       <div>タイトル</div>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, placeholder: "入力してください" %>
       <div>衝動ポイント</div>
-      <%= f.text_area :caption %>
+      <%= f.text_area :caption, placeholder: "入力してください" %>
       <div>価格</div>
-      <%= f.text_field :price %>
+      <%= f.text_field :price, placeholder: "数字のみ入力してください" %>
       <div>衝動リンクURL</div>
-      <%= f.text_field :url %>
+      <%= f.text_field :url, placeholder: "空白でも投稿できます" %>
       <div>画像</div>
       <div><%= f.attachment_field :image %></div>
       <br>
       <div>スペースで複数タグ付け</div>
       <div>例：音楽 文芸 スポーツ</div>
-      <div><%= f.text_field :tag_name %></div>
+      <div><%= f.text_field :tag_name, placeholder: "空白でも投稿できます" %></div>
       <p><%= f.submit '投稿する' %></p>
 
     <% end %>

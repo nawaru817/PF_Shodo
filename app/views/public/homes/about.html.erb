@@ -22,6 +22,12 @@
 
     <div class="about__text__start">それでは始めましょう</div>
     <div class="about__text--youkoso-big">ようこそ</div>
-    <div class="about__text--market-big">衝動買いマーケットへ</div>
+    <div class="about__text--market-big">
+      <% if admin_signed_in? %>
+        <%= link_to "衝動買いマーケットへ", admin_top_path, class: "about__text--market-big" %>
+      <% else %>
+        <%= link_to "衝動買いマーケットへ", root_path, class: "about__text--market-big" %>
+      <% end %>
+    </div>
   </div>
 </body>
