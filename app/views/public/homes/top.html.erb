@@ -1,6 +1,7 @@
 <body>
   <div class= "post-form"><%= render 'public/post_items/post_form', post_item: @post_item %></div><!--投稿フォームの部分テンプレートです-->
   <div class="post-items">
+    <div class="post-form__flash"><%= flash[:notice_login] %></div>
     <span class="post-items__header"><h3>投稿一覧</h3></span>
     <div class="scroll-list jscroll"><!--無限スクロールのクラスです-->
       <div class="container-top">

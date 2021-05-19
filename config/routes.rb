@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'top', to: 'homes#top'
+    post 'guest_sign_in', to: 'homes#admin_guest_sign_in'
     resources :post_items, only: [:create, :edit, :update, :show, :destroy]do
       resources :post_comments, only: [:destroy]
     end
