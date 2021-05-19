@@ -45,14 +45,19 @@
                   <% end %>
                 <% end %>
               </div>
-              <p><%= link_to "衝動リンク", post_item.url, target: :_blank, rel: "noopener noreferrer", data: { confirm: '外部サイトを開きますか？'}, class: "btn box__btn-shodo--orange" %></p>
+              <% if post_item.url.empty? == false %>
+                <p><%= link_to "衝動リンク", post_item.url, target: :_blank, rel: "noopener noreferrer", data: { confirm: '外部サイトを開きますか？'}, class: "btn box__btn-shodo--orange" %></p>
+              <% end %>
               <% i = 0 %>
               <% @tag_maps.each do |tag_map| %>
                 <% if tag_map.post_item_id == post_item.id %>
                   <%= link_to tag_map.tag.tag_name, tag_path(tag_map.tag.id), class: "btn box__btn-tag--blue" %>
                   <% i += 1 %>
                 <% end %>
-                <% break if i== 4 %>
+                <% if i== 4 %>
+                  <span>…</span>
+                  <% break %>
+                <% end %>
               <% end %>
             </div>
           <% end %>

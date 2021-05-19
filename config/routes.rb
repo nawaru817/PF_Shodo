@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   devise_for :customers
   scope module: :public do
     root to: 'homes#top'
+    post 'guest_sign_in', to: 'homes#guest_sign_in'
 
     get 'ranking', to: 'homes#ranking'
 
