@@ -13,7 +13,7 @@
         <% if admin_signed_in? %>
           <td>
             <%= link_to admin_post_item_path(favorite_rank.id) do %>
-              <%= attachment_image_tag favorite_rank, :image, :fill, 60, 50 %>
+              <%= attachment_image_tag favorite_rank, :image, :fill, 60, 50, fallback: "no_image.jpg", size: '60x50' %>
             <% end %>
           </td>
           <td>
@@ -22,7 +22,7 @@
         <% else %>
           <td>
             <%= link_to post_item_path(favorite_rank.id) do %>
-              <%= attachment_image_tag favorite_rank, :image, :fill, 60, 50 %>
+              <%= attachment_image_tag favorite_rank, :image, :fill, 60, 50, fallback: "no_image.jpg", size: '60x50' %>
             <% end %>
           </td>
           <td>
@@ -46,7 +46,7 @@
         <% if admin_signed_in? %>
           <td>
             <%= link_to admin_post_item_path(comment_rank.id) do %>
-              <%= attachment_image_tag comment_rank, :image, :fill, 60, 50 %>
+              <%= attachment_image_tag comment_rank, :image, :fill, 60, 50, fallback: "no_image.jpg", size: '60x50' %>
             <% end %>
           </td>
           <td>
@@ -55,7 +55,7 @@
         <% else %>
           <td>
             <%= link_to post_item_path(comment_rank.id) do %>
-              <%= attachment_image_tag comment_rank, :image, :fill, 60, 50 %>
+              <%= attachment_image_tag comment_rank, :image, :fill, 60, 50, fallback: "no_image.jpg", size: '60x50' %>
             <% end %>
           </td>
           <td>
@@ -79,7 +79,7 @@
         <% if admin_signed_in? %>
           <td>
             <%= link_to admin_post_item_path(impression_rank.id) do %>
-              <%= attachment_image_tag impression_rank, :image, :fill, 60, 50 %>
+              <%= attachment_image_tag impression_rank, :image, :fill, 60, 50, fallback: "no_image.jpg", size: '60x50' %>
             <% end %>
           </td>
           <td>
@@ -88,7 +88,7 @@
         <% else %>
           <td>
             <%= link_to post_item_path(impression_rank.id) do %>
-              <%= attachment_image_tag impression_rank, :image, :fill, 60, 50 %>
+              <%= attachment_image_tag impression_rank, :image, :fill, 60, 50, fallback: "no_image.jpg", size: '60x50' %>
             <% end %>
           </td>
           <td>
