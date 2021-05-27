@@ -1,126 +1,124 @@
-<body>
-  <div class="container-post-item">
-    <div class="post-item">
-      <div class="post-item__header">
-        <h1>衝動詳細(管理者)</h1>
-        <span class="post-item__header__date-admin">投稿日：<%= @post_item.created_at.strftime('%Y/%m/%d') %></span>
-      </div>
-      <div class="post-item__image"><%= attachment_image_tag @post_item, :image, :fill, 500, 350, fallback: "no_image.jpg", size:'500x350' %></div>
-      <table class="post-item__text">
-        <thead>
-          <tr>
-            <th colspan="2"><%= @post_item.title %></th>
-          </tr>
-          <tr>
-            <th width="120">衝動ポイント</th>
-            <td><%= @post_item.caption %></td>
-          </tr>
-          <tr>
-            <th>価格</th>
-            <td><%= @post_item.price %>円</td>
-          </tr>
-          <tr>
-            <th>衝動リンク</th>
-            <% if @post_item.url.empty? == false %>
-              <td><%= link_to @post_item.url.truncate(40), @post_item.url, target: :_blank, rel: "noopener noreferrer", data: { confirm: '外部サイトを開きますか？'} %></td>
-            <% else %>
-              <td>リンク先がありません</td>
-            <% end %>
-          </tr>
-          <tr>
-            <th>ユーザー名</th>
-            <td><%= link_to @post_item.customer.name, admin_customer_path(@post_item.customer_id), class: "post-item__text__customer-name" %></td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <!--いいね機能-->
-              <div class="post-item__favorite">
-                <% if customer_signed_in? %>
-                  <% if @post_item.favorited_by?(current_customer) %>
-                    <p>
-                      <%= link_to post_item_favorites_path(@post_item), method: :delete do %>
-                        ♥<%= @post_item.favorites.count %> いいね
-                      <% end %>
-                    </p>
-                    <% else %>
-                    <p>
-                      <%= link_to post_item_favorites_path(@post_item), method: :post do %>
-                        ♡<%= @post_item.favorites.count %> いいね
-                      <% end %>
-                    </p>
-                  <% end %>
-                <% else %>
-                  <%= @post_item.favorites.count %> いいね
-                <% end %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <% @post_item.tags.each do |tag| %>
-                <%= link_to tag.tag_name, admin_tag_path(tag.id), class: "btn box__btn-tag--blue" %>
-              <% end %>
-            </td>
-          </tr>
-          <% if admin_signed_in? %>
-            <tr>
-              <td colspan="2">
-                <%= link_to "編集する", edit_admin_post_item_path(params[:id]) %>
-                <%= link_to "削除する", admin_post_item_path(params[:id]), method: :delete %>
-              </td>
-            </tr>
-          <% end %>
-        </thead>
-      </table>
+<div class="container-post-item">
+  <div class="post-item">
+    <div class="post-item__header">
+      <h1>衝動詳細(管理者)</h1>
+      <span class="post-item__header__date-admin">投稿日：<%= @post_item.created_at.strftime('%Y/%m/%d') %></span>
     </div>
-  </div>
-
-    <div class="comment">
-      <span class="comment__impressions">閲覧数：<%=  @post_item.impressionist_count %></span><!--閲覧数を表示しています-->
-      <span class="comment__count"><%= @post_item.post_comments.count %>コメント</span>
-      <span class="comment__favorite"><%= @post_item.favorites.count %> いいね</span>
-      <div class="comment__post">
-        <% if @post_item.post_comments.exists? == false %>
-          <table>
-            <tbody>
-              <tr>
-                <td class="comment__post__font" width="250">コメントがまだありません</td>
-              </tr>
-            </tbody>
-          </table>
-        <% else %>
-          <table>
-            <tbody>
-              <!--コメントを表示するeach文です-->
-              <% @post_item.post_comments.each do |post_comment| %>
-                <tr>
-                  <td class="comment__post__font" width="250"><%= post_comment.comment %></td>
-                  <td class="comment__post__font"><%= post_comment.customer.name %></td>
-                  <td class="comment__post__font"><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>
-                  <td>
-                    <% if admin_signed_in? %>
-                      <span class="comment-delete">
-                        <%= link_to "削除", admin_post_item_post_comment_path(post_comment.post_item, post_comment), method: :delete, class: "comment__post__font" %>
-                      </span>
+    <div class="post-item__image"><%= attachment_image_tag @post_item, :image, :fill, 500, 350, fallback: "no_image.jpg", size:'500x350' %></div>
+    <table class="post-item__text">
+      <thead>
+        <tr>
+          <th colspan="2"><%= @post_item.title %></th>
+        </tr>
+        <tr>
+          <th width="120">衝動ポイント</th>
+          <td><%= @post_item.caption %></td>
+        </tr>
+        <tr>
+          <th>価格</th>
+          <td><%= @post_item.price %>円</td>
+        </tr>
+        <tr>
+          <th>衝動リンク</th>
+          <% if @post_item.url.empty? == false %>
+            <td><%= link_to @post_item.url.truncate(40), @post_item.url, target: :_blank, rel: "noopener noreferrer", data: { confirm: '外部サイトを開きますか？'} %></td>
+          <% else %>
+            <td>リンク先がありません</td>
+          <% end %>
+        </tr>
+        <tr>
+          <th>ユーザー名</th>
+          <td><%= link_to @post_item.customer.name, admin_customer_path(@post_item.customer_id), class: "post-item__text__customer-name" %></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <!--いいね機能-->
+            <div class="post-item__favorite">
+              <% if customer_signed_in? %>
+                <% if @post_item.favorited_by?(current_customer) %>
+                  <p>
+                    <%= link_to post_item_favorites_path(@post_item), method: :delete do %>
+                      ♥<%= @post_item.favorites.count %> いいね
                     <% end %>
-                  </td>
-                </tr>
+                  </p>
+                  <% else %>
+                  <p>
+                    <%= link_to post_item_favorites_path(@post_item), method: :post do %>
+                      ♡<%= @post_item.favorites.count %> いいね
+                    <% end %>
+                  </p>
+                <% end %>
+              <% else %>
+                <%= @post_item.favorites.count %> いいね
               <% end %>
-            </tbody>
-          </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <% @post_item.tags.each do |tag| %>
+              <%= link_to tag.tag_name, admin_tag_path(tag.id), class: "btn box__btn-tag--blue" %>
+            <% end %>
+          </td>
+        </tr>
+        <% if admin_signed_in? %>
+          <tr>
+            <td colspan="2">
+              <%= link_to "編集する", edit_admin_post_item_path(params[:id]) %>
+              <%= link_to "削除する", admin_post_item_path(params[:id]), method: :delete %>
+            </td>
+          </tr>
         <% end %>
-      </div>
+      </thead>
+    </table>
+  </div>
+</div>
 
-      <!--コメントの投稿フォームです-->
-      <div class="comment__form">
-        <% if customer_signed_in? %>
-          <%= form_with(model:[@post_item, @post_comment], local: true) do |f| %>
-            <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-            <br>
-            <%= f.submit "コメントする" %>
-          <% end %>
+  <div class="comment">
+    <span class="comment__impressions">閲覧数：<%=  @post_item.impressionist_count %></span><!--閲覧数を表示しています-->
+    <span class="comment__count"><%= @post_item.post_comments.count %>コメント</span>
+    <span class="comment__favorite"><%= @post_item.favorites.count %> いいね</span>
+    <div class="comment__post">
+      <% if @post_item.post_comments.exists? == false %>
+        <table>
+          <tbody>
+            <tr>
+              <td class="comment__post__font" width="250">コメントがまだありません</td>
+            </tr>
+          </tbody>
+        </table>
+      <% else %>
+        <table>
+          <tbody>
+            <!--コメントを表示するeach文です-->
+            <% @post_item.post_comments.each do |post_comment| %>
+              <tr>
+                <td class="comment__post__font" width="250"><%= post_comment.comment %></td>
+                <td class="comment__post__font"><%= post_comment.customer.name %></td>
+                <td class="comment__post__font"><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>
+                <td>
+                  <% if admin_signed_in? %>
+                    <span class="comment-delete">
+                      <%= link_to "削除", admin_post_item_post_comment_path(post_comment.post_item, post_comment), method: :delete, class: "comment__post__font" %>
+                    </span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+
+    <!--コメントの投稿フォームです-->
+    <div class="comment__form">
+      <% if customer_signed_in? %>
+        <%= form_with(model:[@post_item, @post_comment], local: true) do |f| %>
+          <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+          <br>
+          <%= f.submit "コメントする" %>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
-</body>
+</div>

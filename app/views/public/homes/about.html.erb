@@ -1,33 +1,31 @@
-<body>
-  <div class="about">
-    <h1 class="about__h1">このサイトについて</h1>
+<div class="about">
+  <h1 class="about__h1">このサイトについて</h1>
 
-    <div class="about__text">ネットサーフィンや、街中を歩いているとき</div>
-    <div class="about__text">ふと目に留まったモノを見て</div>
-    <div class="about__text--big">欲しい！！</div>
-    <div>そう思ったことはありませんか？</div>
+  <div class="about__text">ネットサーフィンや、街中を歩いているとき</div>
+  <div class="about__text">ふと目に留まったモノを見て</div>
+  <div class="about__text--big">欲しい！！</div>
+  <div>そう思ったことはありませんか？</div>
 
-    <div class="about__text__shodo">ここはそんな <span class="about__text--big">〝 衝動 〟</span> を投稿し <span class="about__text--big">〝 共有 〟</span> するサイトです</div>
+  <div class="about__text__shodo">ここはそんな <span class="about__text--big">〝 衝動 〟</span> を投稿し <span class="about__text--big">〝 共有 〟</span> するサイトです</div>
 
-    <div class="about__text">もしもあなたが</div>
-    <div class="about__text--middle">「すごく欲しい！ でも迷ってる！ どうしよう！！」</div>
-    <div class="about__text__risei">そんな<span class="about__text--middle">〝 理性 〟</span>と<span class="about__text--middle">〝 衝動 〟</span>で葛藤している時も</div>
-    <div class="about__text">一度その衝動を抑えて投稿してみましょう</div>
-    <div class="about__text__risei">きっとみんなが意見をくれます</div>
+  <div class="about__text">もしもあなたが</div>
+  <div class="about__text--middle">「すごく欲しい！ でも迷ってる！ どうしよう！！」</div>
+  <div class="about__text__risei">そんな<span class="about__text--middle">〝 理性 〟</span>と<span class="about__text--middle">〝 衝動 〟</span>で葛藤している時も</div>
+  <div class="about__text">一度その衝動を抑えて投稿してみましょう</div>
+  <div class="about__text__risei">きっとみんなが意見をくれます</div>
 
-    <div class="about__text--buy-middle">「何か買いたい！ でも買うものがない！！」</div>
-    <div class="about__text">そんな衝動を抑えられない時は</div>
-    <div class="about__text">共有された衝動を読みあさってみましょう</div>
-    <div class="about__text__miryoku">きっと<span class="about__text--middle">〝 魅力 〟</span>ある<span class="about__text--middle">〝 モノ 〟が見つかるはずです</span></div>
+  <div class="about__text--buy-middle">「何か買いたい！ でも買うものがない！！」</div>
+  <div class="about__text">そんな衝動を抑えられない時は</div>
+  <div class="about__text">共有された衝動を読みあさってみましょう</div>
+  <div class="about__text__miryoku">きっと<span class="about__text--middle">〝 魅力 〟</span>ある<span class="about__text--middle">〝 モノ 〟</span>が見つかるはずです</div>
 
-    <div class="about__text__start">それでは始めましょう</div>
-    <div class="about__text--youkoso-big">ようこそ</div>
-    <div class="about__text--market-big">
-      <% if admin_signed_in? %>
-        <%= link_to "衝動買いマーケットへ", admin_top_path, class: "about__text--market-big" %>
-      <% else %>
-        <%= link_to "衝動買いマーケットへ", root_path, class: "about__text--market-big" %>
-      <% end %>
-    </div>
+  <div class="about__text__start">それでは始めましょう</div>
+  <div class="about__text--youkoso-big">ようこそ</div>
+  <div class="about__text--market-big">
+    <% if admin_signed_in? %>
+      <%= link_to "衝動買いマーケットへ", admin_top_path, class: "about__text--market-big" %>
+    <% else %>
+      <%= link_to "衝動買いマーケットへ", root_path, class: "about__text--market-big" %>
+    <% end %>
   </div>
-</body>
+</div>
