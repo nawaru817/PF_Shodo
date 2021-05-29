@@ -35,19 +35,9 @@
             <!--いいね機能-->
             <div class="post-item__favorite">
               <% if customer_signed_in? %>
-                <% if @post_item.favorited_by?(current_customer) %>
-                  <p>
-                    <%= link_to post_item_favorites_path(@post_item), method: :delete do %>
-                      ♥<%= @post_item.favorites.count %> いいね
-                    <% end %>
-                  </p>
-                  <% else %>
-                  <p>
-                    <%= link_to post_item_favorites_path(@post_item), method: :post do %>
-                      ♡<%= @post_item.favorites.count %> いいね
-                    <% end %>
-                  </p>
-                <% end %>
+                <div>
+                  <%= render 'public/favorites/favorite', post_item: post_item %>
+                </div>
               <% else %>
                 <%= @post_item.favorites.count %> いいね
               <% end %>
